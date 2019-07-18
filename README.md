@@ -6,7 +6,7 @@ best angular UI framework built with love from yogyakarta to the world.
 ## Installation
 
 ```bash
-npm install pilar --registry https://npm.uii.ac.id
+npm install pilar
 ```
 
 Import into a module
@@ -41,4 +41,4 @@ Add needed components, services, directives, pipes to your page
 ## Links
 
 - [Pilar Documentation](http://10.30.2.36:31200)
-- [Release Notes](https://gitlab-cloud.uii.ac.id/uii-gateway/frontend/lib-uii-gateway-pilar-angular/blob/master/CHANGELOG.md)
+- [Release Notes](https://github.com/ugwx/pilar/blob/master/CHANGELOG.md)

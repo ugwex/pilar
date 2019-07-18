@@ -19,8 +19,20 @@
   ],
   "repository": {
     "type": "git",
-    "url": "https://gitlab-cloud.uii.ac.id/uii-gateway/frontend/lib-uii-gateway-pilar-angular.git"
+    "url": "https://github.com/ugwx/pilar.git"
   },
+  "bugs": {
+    "url": "https://github.com/ugwx/pilar/issues"
+  },
+  "homepage": "https://github.com/ugwx/pilar",
+  "keywords": [
+    "angular",
+    "javascripts",
+    "typescript",
+    "framework",
+    "UI Kit",
+    "Component"
+  ],
   "peerDependencies": {
     "@angular/common": "^6.0.0-rc.0 || ^6.0.0",
     "@angular/core": "^6.0.0-rc.0 || ^6.0.0"
