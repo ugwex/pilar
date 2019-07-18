@@ -1,0 +1,184 @@
+.apps-search{
+  margin-bottom: 40px;
+  form{
+    max-width: 300px;
+    margin-left: auto;
+    margin-right: auto;
+
+    @media (min-width: $screen-sm) {
+      max-width: 340px;
+    }
+  }
+}
+
+.home-app-container {
+  max-width: 930px;
+  margin: 0 auto;
+  padding: 0;
+  list-style: none;
+}
+
+.home-app-item {
+  min-width: 130px;
+  display: inline-block;
+  vertical-align: top;
+  width: 20%;
+  margin-bottom: 40px;
+  @media screen and (max-width: 786px) {
+      width: 25%;
+  }
+  @media screen and (max-width: 670px) {
+      width: 33.3%;
+  }
+  @media screen and (max-width: 445px) {
+    min-width: 33.3%;
+}
+}
+
+.home-app-image, .home-app-title, .home-app-desc {
+  margin-bottom: 5px;
+  margin-left: auto;
+  margin-right: auto;
+  cursor: pointer;
+}
+
+.home-app-image {
+  width: 130px;
+  @media screen and (max-width: 480px) {
+    width: 100px;
+  }
+}
+
+.home-app-title {
+  width: 99%;
+  text-align: center;
+}
+
+.home-app-desc {
+  width: 99%;
+  text-align: center;
+  @media screen and (max-width: 670px) {
+      display: none;
+  }
+}
+
+.s-app-search {
+    height: 40px;
+    max-width: 338px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 40px;
+}
+
+.s-app-container {
+    max-width: 930px;
+    margin: 0 auto;
+    padding: 0;
+    list-style: none;
+}
+
+.s-app-item {
+    min-width: 130px;
+    display: inline-block;
+    width: 20%;
+    margin-bottom: 40px;
+    @media screen and (max-width: 786px) {
+        width: 25%;
+    }
+    @media screen and (max-width: 670px) {
+        width: 33.3%;
+    }
+    @media screen and (max-width: 445px) {
+        min-width: 33.3%;
+    }
+}
+
+.s-app-image, .s-app-title, .s-app-desc {
+    margin-bottom: 5px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.s-app-image {
+    height: 130px;
+    width: 130px;
+    border-radius: 15px;
+    @media screen and (max-width: 480px) {
+        width: 100px;
+        height: 100px;
+    }
+}
+
+.s-app-title {
+    border-radius: 5px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    height: 12px;
+    width: 55%;
+    @media screen and (max-width: 670px) {
+        width: 75%;
+    }
+}
+
+.s-app-desc {
+    border-radius: 5px;
+    margin-bottom: 10px;
+    height: 12px;
+    width: 75%;
+    @media screen and (max-width: 670px) {
+        display: none
+    }
+}
+// .apps-container{
+//   max-width: 930px;
+//   margin-left: auto;
+//   margin-right: auto;
+//   padding-left: 15px;
+//   padding-right: 15px;
+//   @media (min-width: $screen-lg) {
+//     .col-md-2{
+//       width: 20%;
+//     }
+//   }
+// }
+// .apps-search,
+// .apps-item{
+//   margin-bottom: 40px;
+//   text-align: center;
+// }
+// .apps-item {
+//   min-height: 100px;
+//   @media (max-width: $screen-sm-max) {
+//     margin-bottom: 20px;
+//   }
+//   @media (min-width: $screen-sm) {
+//     min-height: 160px;
+//   }
+//   @media (min-width: $screen-md) {
+//     min-height: 210px;
+//   }
+//   h5{
+//     font-weight: 700;
+//     margin-top: 5px;
+//     margin-bottom: 5px;
+//   }
+// }
+// .apps-image{
+//   display: inline-block;
+//   max-width: 130px;
+//   @media (max-width: $screen-sm-max) {
+//     // max-width: 80px;
+//     max-width: 70%;
+//   }
+// }
+
+// .apps-desc{
+//   @media (max-width: $screen-sm-max) {
+//     display: none;
+//   }
+// }
+
+// .application-item{
+//   margin-bottom: 30px;
+//   min-height: 214px;
+// }

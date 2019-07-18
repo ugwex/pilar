@@ -1,0 +1,167 @@
+<h4 class="content-header-title">Component - Tab</h4>
+<div class="content-body">
+  <h2>Usage</h2>
+  <p>Import <code>PilarModule</code> in your root module <code>*.app.module</code>.</p>
+  <div class="box-template" [innerHTML]="basicImportModule"></div>
+  <h2>Basic Tab</h2>
+  <uii-tabset>
+    <uiiTabItem title="Title 1">
+      <div class="content-body" style="min-height: 100px">
+        Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.
+      </div>
+    </uiiTabItem>
+    <uiiTabItem title="Title 2">
+        <div class="content-body" style="min-height: 100px">
+          It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+        </div>
+      </uiiTabItem>
+    <uiiTabItem title="Title 3">
+      <div class="content-body" style="min-height: 100px">
+        It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English.
+      </div>
+    </uiiTabItem>
+  </uii-tabset>
+
+  <div class="box-example">
+    <tabset>
+      <tab heading='template'>
+        <div class="box-template" [innerHTML]="basicTemplate"></div>
+      </tab>
+      <tab heading="component">
+        <div class="box-component" [innerHtml]="basicComponent"></div>
+      </tab>
+    </tabset>
+  </div>
+  <h2>Tab Title Component</h2>
+  <p>You can set to diplay either the title, icon or both on tab item</p>
+  <uii-tabset [tabMobileAttr]="'icon'">
+      <uiiTabItem title="Alamat & Kontak" tabIcon="fa fa-address-card">
+        <div class="content-body" style="min-height: 100px">
+          Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.
+        </div>
+      </uiiTabItem>
+      <uiiTabItem title="Pendidikan" tabIcon="fa fa-graduation-cap">
+          <div class="content-body" style="min-height: 100px">
+            It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+          </div>
+        </uiiTabItem>
+      <uiiTabItem title="Keluarga" tabIcon="fa fa-users">
+        <div class="content-body" style="min-height: 100px">
+          It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English.
+        </div>
+      </uiiTabItem>
+    </uii-tabset>
+  
+    <div class="box-example">
+      <tabset>
+        <tab heading='template'>
+          <div class="box-template" [innerHTML]="titleComponentTemplate"></div>
+        </tab>
+        <tab heading="component">
+          <div class="box-component" [innerHtml]="basicComponent"></div>
+        </tab>
+      </tabset>
+    </div>
+  <h2>Manual Select Tab</h2>
+  <p>You can manually select tab from your component.</p>
+  <span>
+    <button class="btn btn-primary" (click)="onSelectTab(1)">Select tab 2</button>
+    <button class="btn btn-primary" (click)="onSelectTab(3)">Select tab 4</button>
+  </span>
+  <uii-tabset #uiiTabset>
+    <uiiTabItem title="Title 1">
+      <div class="content-body" style="min-height: 100px">
+        Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.
+      </div>
+    </uiiTabItem>
+    <uiiTabItem title="Title 2">
+      <div class="content-body" style="min-height: 100px">
+        It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+      </div>
+    </uiiTabItem>
+    <uiiTabItem title="Title 3">
+      <div class="content-body" style="min-height: 100px">
+        It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English.
+      </div>
+    </uiiTabItem>
+    <uiiTabItem title="Title 4">
+      <div class="content-body" style="min-height: 100px">
+        That a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English.
+      </div>
+    </uiiTabItem>
+  </uii-tabset>
+  <div class="box-example">
+      <tabset>
+        <tab heading='template'>
+          <div class="box-template" [innerHTML]="manualSelectTemplate"></div>
+        </tab>
+        <tab heading="component">
+          <div class="box-component" [innerHtml]="manualSelectComponent"></div>
+        </tab>
+      </tabset>
+    </div>
+  <h2>Select Event</h2>
+  <p>You can subscribe to tab's select event</p>
+  <uii-tabset>
+    <uiiTabItem title="Title 1" (selected)="onTabItemSelect($event)">
+      <div class="content-body">
+        Content for tab 1
+      </div>
+    </uiiTabItem>
+    <uiiTabItem title="Title 2" (selected)="onTabItemSelect($event)">
+        <div class="content-body">
+          Content for tab 2
+        </div>
+      </uiiTabItem>
+    <uiiTabItem title="Title 3" (selected)="onTabItemSelect($event)">
+        <div class="content-body">
+          Content for tab 3
+        </div>
+      </uiiTabItem>
+  </uii-tabset>
+  <div class="well margin-top-20">
+    Selected tab title is : <strong>{{_selectedTab}}</strong>
+  </div>
+  <div class="box-example">
+    <tabset>
+      <tab heading='template'>
+        <div class="box-template" [innerHTML]="selectedTemplate"></div>
+      </tab>
+      <tab heading="component">
+        <div class="box-component" [innerHtml]="selectedComponent"></div>
+      </tab>
+    </tabset>
+  </div>
+  <h2>Deselect Event</h2>
+  <p>You can subscribe to tab's deselect event</p>
+  <uii-tabset>
+    <uiiTabItem title="Title 1" (deselected)="onTabItemDeselect($event)">
+      <div class="content-body">
+        Content for tab 1
+      </div>
+    </uiiTabItem>
+    <uiiTabItem title="Title 2" (deselected)="onTabItemDeselect($event)">
+        <div class="content-body">
+          Content for tab 2
+        </div>
+      </uiiTabItem>
+    <uiiTabItem title="Title 3" (deselected)="onTabItemDeselect($event)">
+        <div class="content-body">
+          Content for tab 3
+        </div>
+      </uiiTabItem>
+  </uii-tabset>
+  <div class="well margin-top-20">
+    Deselected tab title is : <strong>{{_deselectedTab}}</strong>
+  </div>
+  <div class="box-example">
+    <tabset>
+      <tab heading='template'>
+        <div class="box-template" [innerHTML]="deSelectedTemplate"></div>
+      </tab>
+      <tab heading="component">
+        <div class="box-component" [innerHtml]="deSelectedComponent"></div>
+      </tab>
+    </tabset>
+  </div>
+</div>

@@ -1,0 +1,15 @@
+.well{
+    &.well-none, &.well-default{
+        border-color: $uii-well-border-cl;
+        background: none;
+        box-shadow: none;
+    }
+
+    &.well-default {
+        border-color: $brand-default;
+    }
+
+    &.disable{
+        background-color: $uii-well-disable-bg-cl;
+    }
+}

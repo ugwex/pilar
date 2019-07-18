@@ -1,0 +1,251 @@
+ng2-slim-loading-bar{
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100%;
+  z-index: 1031;
+}
+.navbar{
+  border: none;
+  padding: 10px 20px;
+  @media (min-width: $screen-lg) {
+      padding-left: 50px;
+      padding-right: 50px; 
+  }
+}
+.navbar-header{
+  @media (max-width: $screen-sm-max){
+    float: left;
+  }
+}
+.navbar-brand{
+  img{
+      max-height: 50px;
+  }
+  @media (max-width: 490px){
+    display: none;
+  }
+}
+.navbar-nav{
+  .header-menu{
+    > .dropdown-menu{
+      margin-top: 10px;
+    }
+
+    &.header-menu__notifications {
+      > .dropdown-menu{
+        right: -65px;
+      }
+    }
+    &.header-menu__applications {
+      > .dropdown-menu{
+        right: -65px;
+      }
+    }
+    &.header-menu__account {
+      > .dropdown-menu{
+        right: 0;
+      }
+    }
+
+    @media (max-width: $screen-sm-max){
+      display: inline-block;
+      > .dropdown-menu{
+        left: auto;
+        right: 0;
+      }
+      &.open{
+        > .dropdown-menu{
+          position: absolute;
+        }
+      }
+    }
+  }
+  @media (max-width: $screen-sm-max){
+    margin-top: 0;
+    margin-bottom: 0;
+    &.navbar-right{
+      float: right;
+    }
+  }
+}
+.navbar-toggle {
+  margin-right: 30px;
+  @media (max-width: $screen-md-max) {
+    display: block;
+    float: left;
+  }
+  @media (min-width: $screen-sm) {
+    margin-left: -15px;
+  }
+}
+.header-menu{
+  .btn-link{
+    position: relative;
+    padding-top: 0;
+    padding-bottom: 0;
+    height: 50px;
+    min-width: 50px;
+    &:focus,
+    &:active{
+      outline: none;
+    }
+    span{
+      display: inline-block;
+      vertical-align: middle;
+    }
+    span.icon{
+      font-size: 20px;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
+    span.avatar{
+      border-radius: 50%;
+      font-size: 40px;
+      width: 32px;
+      height: 32px;
+      overflow: hidden;
+    }
+    span.badge{
+      position: absolute;
+      top: 5px;
+      right: 5px;
+    }
+    span.caret{
+      font-size: 18px;
+    }
+  }
+  .dropdown-footer{
+    text-align: center;
+  }
+}
+.header-menu__account{
+  margin-left: 10px;
+}
+.header-menu__notifications{
+  .notification-item{
+    padding-left: 40px;
+    padding-right: 10px;
+  }
+  .notif-image{
+    width: 20px;
+    left: 10px;
+  }
+  .dropdown-menu{
+    .dropdown-content{
+      > ul {
+        > li{
+          padding: 0;
+        }
+      }
+    }
+  }
+}
+.header-menu__applications{
+  .dropdown-content{
+    padding: 10px 10px 5px;
+    min-width: 240px;
+  }
+  .row{
+    margin-left: -8px;
+    margin-right: -8px;
+    .col-xs-4{
+      padding-left: 8px;
+      padding-right: 8px;
+    }
+  }
+  .shortcut-application-item{
+    h6{
+      font-size: 8px;
+      margin-top: 5px;
+    }
+  }
+}
+
+.header-menu__account{
+  .dropdown-header{
+    padding-left: 0;
+    padding-right: 0;
+  }
+  .account-image{
+    border-radius: 50%;
+    position: absolute;
+    width: 50px;
+    height: 50px;
+    overflow: hidden;
+    left: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    img{
+      width: 100%;
+    }
+  }
+
+  .account-info{
+    font-size: 12px;
+    text-align: left;
+    span{
+      display: block;
+      &.name{
+        font-weight: 700;
+      }
+    }
+  }
+
+  .account-option{
+    display: block;
+    text-align: left;
+    padding: 10px;
+    span{
+      display: inline-block;
+      vertical-align: middle;
+      &.icon{
+        font-size: 20px;
+        margin-right: 10px;
+      }
+    }
+  }
+
+  .account-item{
+    position: relative;
+    padding: 10px 10px 10px 90px;
+    min-height: 70px;
+    &.account-default{
+      padding-left: 100px;
+      min-height: 86px;
+      .account-image{
+        width: 70px;
+        height: 70px;
+      }
+      .account-info{
+        margin-top: 5px;
+      }
+    }
+  }
+}
+
+.base{
+  &.has-shortcut-menu{
+    .navbar-nav{
+      .header-menu{
+        &.header-menu__notifications {
+          > .dropdown-menu{
+            right: -115px;
+          }
+        }
+      }
+    }
+  }
+  &.is-home{
+    .navbar-toggle{
+      display: none;
+    }
+    @media (max-width: 490px){
+      .navbar-brand {
+          display: block;
+      }
+    }
+  }
+}

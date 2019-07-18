@@ -1,0 +1,53 @@
+<h4 class="content-header-title">Component - Modal</h4>
+<div class="content-body">
+  <h2>Basic</h2>
+  <p>Import <code>ModalModule</code> in your file <code>*.component.ts</code>.</p>
+  <div class="box-usage" [innerHtml]="docUsage"></div>
+
+  <div class="box-demo margin-bottom-20">
+      <button type="button" class="btn btn-primary" (click)="openModal(template)">Create template modal</button>
+ 
+      <ng-template #template>
+        <div class="modal-header">
+          <h4 class="modal-title pull-left">Modal</h4>
+          <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          This is a modal.
+        </div>
+      </ng-template>
+  </div>
+  <div class="box-example">
+    <tabset>
+      <tab heading='template'>
+        <div class="box-template" [innerHTML]="basicTemplate"></div>
+      </tab>
+      <tab heading="component">
+        <div class="box-component" [innerHtml]="basicComponent"></div>
+      </tab>
+    </tabset>
+  </div>
+
+  <h4 class="text-center">For more options you can see on <a href="https://valor-software.com/ngx-bootstrap/#/modals" target="_blank">ngx-bootstrap</a></h4>
+
+  <h2>Modal Dialog</h2>
+  <div class="box-demo margin-bottom-20">
+    <button class="btn btn-success" (click)="onBtnDialogClick()">Modal Dialog</button>
+    <div class="well margin-top-20">
+      {{ modalDialogStatus }}
+    </div>
+  </div>
+  <div class="box-example">
+    <tabset>
+      <tab heading='template'>
+        <div class="box-template" [innerHTML]="modalDialogTemplate"></div>
+      </tab>
+      <tab heading="component">
+        <div class="box-component" [innerHtml]="modalDialogComponent"></div>
+      </tab>
+    </tabset>
+  </div>
+
+</div>

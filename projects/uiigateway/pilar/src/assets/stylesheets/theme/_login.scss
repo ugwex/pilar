@@ -1,0 +1,21 @@
+.uii-login {
+  .form-box {
+    background: #fff;
+  }
+}
+
+.welcome-greeting {
+  .greeting-box {
+    .box {
+        background: rgba(#000, .5);
+    }
+  }
+  .title {
+    color: $uii-welcome-greeting-title;
+  }
+  .description {
+    p{
+      color: $uii-welcome-greeting-description;
+    }
+  }
+}

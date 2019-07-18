@@ -1,0 +1,42 @@
+<!-- <div class="modal-header padding-0">
+    <div class="information information-danger margin-bottom-0">
+        <p><strong>{{ message }}</strong></p>
+    </div>
+</div>
+<div class="modal-body">
+    <div class="modal-form-signin">
+        <div class="image margin-bottom-20">
+            <img src="assets/images/uii-logo.png" class="img-responsive" alt="uii logo">
+        </div>
+
+        <form *ngIf="!enable2fa" name="form" (ngSubmit)="f.form.valid && doLogin()" #f="ngForm" novalidate>
+            <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !username.valid }">
+                <input type="text" class="form-control has-icon form-icon-user" name="username" [(ngModel)]="model.username" #username="ngModel" required placeholder="{{ 'login user label' | translate }}" />
+                <div *ngIf="f.submitted && !username.valid" class="help-block">{{ 'error empty username' | translate }}</div>
+            </div>
+            <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !password.valid }">
+                <input type="password" class="form-control has-icon form-icon-key" name="password" [(ngModel)]="model.password" #password="ngModel" required placeholder="{{ 'login password label' | translate }}" />
+                <div *ngIf="f.submitted && !password.valid" class="help-block">{{ 'error empty password' | translate }}</div>
+            </div>
+            <div class="form-group form-button">
+                <button [disabled]="loading" class="btn btn-primary btn-block">{{ 'login button label' | translate }}</button>
+                <img alt="loading..." *ngIf="loading" src="data:image/gif;base64,R0lGODlhEAAQAPIAAP///wAAAMLCwkJCQgAAAGJiYoKCgpKSkiH/C05FVFNDQVBFMi4wAwEAAAAh/hpDcmVhdGVkIHdpdGggYWpheGxvYWQuaW5mbwAh+QQJCgAAACwAAAAAEAAQAAADMwi63P4wyklrE2MIOggZnAdOmGYJRbExwroUmcG2LmDEwnHQLVsYOd2mBzkYDAdKa+dIAAAh+QQJCgAAACwAAAAAEAAQAAADNAi63P5OjCEgG4QMu7DmikRxQlFUYDEZIGBMRVsaqHwctXXf7WEYB4Ag1xjihkMZsiUkKhIAIfkECQoAAAAsAAAAABAAEAAAAzYIujIjK8pByJDMlFYvBoVjHA70GU7xSUJhmKtwHPAKzLO9HMaoKwJZ7Rf8AYPDDzKpZBqfvwQAIfkECQoAAAAsAAAAABAAEAAAAzMIumIlK8oyhpHsnFZfhYumCYUhDAQxRIdhHBGqRoKw0R8DYlJd8z0fMDgsGo/IpHI5TAAAIfkECQoAAAAsAAAAABAAEAAAAzIIunInK0rnZBTwGPNMgQwmdsNgXGJUlIWEuR5oWUIpz8pAEAMe6TwfwyYsGo/IpFKSAAAh+QQJCgAAACwAAAAAEAAQAAADMwi6IMKQORfjdOe82p4wGccc4CEuQradylesojEMBgsUc2G7sDX3lQGBMLAJibufbSlKAAAh+QQJCgAAACwAAAAAEAAQAAADMgi63P7wCRHZnFVdmgHu2nFwlWCI3WGc3TSWhUFGxTAUkGCbtgENBMJAEJsxgMLWzpEAACH5BAkKAAAALAAAAAAQABAAAAMyCLrc/jDKSatlQtScKdceCAjDII7HcQ4EMTCpyrCuUBjCYRgHVtqlAiB1YhiCnlsRkAAAOwAAAAAAAAAAAA=="
+                />
+            </div>
+            <div *ngIf="error && error.code" class="alert alert-danger">{{ error.code | translate }}</div>
+        </form>
+
+        <form *ngIf="enable2fa" name="formA" (ngSubmit)="fa.form.valid && doVerify2FA()" #fa="ngForm" novalidate>
+            <div class="form-group" [ngClass]="{ 'has-error': fa.submitted && !code.valid }">
+                <input type="text" class="form-control has-icon form-icon-key" name="code" [(ngModel)]="model.code" #code="ngModel" required placeholder="{{ 'code authenticator' | translate }}" />
+                <div *ngIf="fa.submitted && !code.valid" class="help-block">{{ 'error empty code authenticator' | translate }}</div>
+            </div>
+            <div class="form-group form-button">
+                <button [disabled]="loading" class="btn btn-primary btn-block">{{ 'verify 2fa' | translate }}</button>
+                <img alt="loading..." *ngIf="loading" src="data:image/gif;base64,R0lGODlhEAAQAPIAAP///wAAAMLCwkJCQgAAAGJiYoKCgpKSkiH/C05FVFNDQVBFMi4wAwEAAAAh/hpDcmVhdGVkIHdpdGggYWpheGxvYWQuaW5mbwAh+QQJCgAAACwAAAAAEAAQAAADMwi63P4wyklrE2MIOggZnAdOmGYJRbExwroUmcG2LmDEwnHQLVsYOd2mBzkYDAdKa+dIAAAh+QQJCgAAACwAAAAAEAAQAAADNAi63P5OjCEgG4QMu7DmikRxQlFUYDEZIGBMRVsaqHwctXXf7WEYB4Ag1xjihkMZsiUkKhIAIfkECQoAAAAsAAAAABAAEAAAAzYIujIjK8pByJDMlFYvBoVjHA70GU7xSUJhmKtwHPAKzLO9HMaoKwJZ7Rf8AYPDDzKpZBqfvwQAIfkECQoAAAAsAAAAABAAEAAAAzMIumIlK8oyhpHsnFZfhYumCYUhDAQxRIdhHBGqRoKw0R8DYlJd8z0fMDgsGo/IpHI5TAAAIfkECQoAAAAsAAAAABAAEAAAAzIIunInK0rnZBTwGPNMgQwmdsNgXGJUlIWEuR5oWUIpz8pAEAMe6TwfwyYsGo/IpFKSAAAh+QQJCgAAACwAAAAAEAAQAAADMwi6IMKQORfjdOe82p4wGccc4CEuQradylesojEMBgsUc2G7sDX3lQGBMLAJibufbSlKAAAh+QQJCgAAACwAAAAAEAAQAAADMgi63P7wCRHZnFVdmgHu2nFwlWCI3WGc3TSWhUFGxTAUkGCbtgENBMJAEJsxgMLWzpEAACH5BAkKAAAALAAAAAAQABAAAAMyCLrc/jDKSatlQtScKdceCAjDII7HcQ4EMTCpyrCuUBjCYRgHVtqlAiB1YhiCnlsRkAAAOwAAAAAAAAAAAA=="
+                />
+            </div>
+            <div *ngIf="error && error.code" class="alert alert-danger">{{ error.code | translate }}</div>
+        </form>
+    </div>
+</div> -->

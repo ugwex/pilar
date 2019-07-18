@@ -1,0 +1,8 @@
+<div *ngIf="group" [formGroup]="group">
+    <textarea id="{{ elementId }}" [formControlName]="controlName"></textarea>
+</div>
+
+<div *ngIf="!group">
+    <textarea id="{{ elementId }}"></textarea>
+</div>
+    

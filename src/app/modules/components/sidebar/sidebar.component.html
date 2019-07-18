@@ -1,0 +1,25 @@
+<div class="sidebar-wrapper">
+    <div class="sidebar-header">
+        <button class="btn btn-link" (click)="onBtnSidebarCloseClick()">
+            <span class="fa-stack fa-lg">
+                <i class="fa fa-circle fa-stack-2x"></i>
+                <i class="fa fa-long-arrow-left fa-stack-1x fa-inverse"></i>
+            </span>
+        </button>
+        <a [routerLink]="['/']" class="sidebar-logo">
+            <img src="assets/images/uii-logo.png" alt="" class="img-responsive">
+        </a>
+    </div>
+    <div class="scrollable">
+        <ul class="main-menu list-unstyled">
+            <li sidebarMenuItem *ngFor="let item of items"
+                [menuItem]="item"
+                [class.menu-group]="item.group"
+                (hoverItem)="onHoverItem($event)"
+                (toggleSubMenu)="onToggleSubMenu($event)"
+                (selectItem)="onSelectItem($event)"
+                (itemClick)="onItemClick($event)"
+                class="menu-item"></li>
+        </ul>
+    </div>
+</div>

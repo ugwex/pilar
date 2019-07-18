@@ -1,0 +1,9 @@
+<div class="landing-page">
+  <div class="landing-desc">
+    <h1 class="landing-desc-title">Selamat datang di <strong innerHTML="{{ application.nama_aplikasi | translate | uiiHighlight }}"></strong>!</h1>
+    <p class="landing-desc-text">{{ application?.deskripsi }}</p>
+  </div>
+  <div *ngIf="application?.icon" class="landing-image apps-image">
+    <img [src]="application?.icon" class="img-responsive" alt="icon">
+  </div>
+</div>

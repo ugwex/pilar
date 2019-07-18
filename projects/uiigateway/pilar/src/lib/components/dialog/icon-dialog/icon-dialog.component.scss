@@ -1,0 +1,14 @@
+.selected-item{
+    color: rgb(19, 183, 248);
+}
+.btn-select-icon{
+    width: 10%;
+    padding-left: 0;
+    border: 1px solid white;
+    padding-right: 0;
+    text-align: center;
+    > span{
+        font-size: 24px;
+        line-height: 26px;
+    }
+}

@@ -1,0 +1,124 @@
+.uii-login {
+    background-size: cover;
+    background-repeat: no-repeat;
+    min-height: 100%;
+    width: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    .form-box {
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        top: 0;
+        right: 0;
+    }
+}
+
+.form-signin {
+  width: 245px;
+  max-width: 100%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  @include middleCenterPos();
+  //text-transform: capitalize;
+  .image {
+    margin-bottom: 30px;
+  }
+  .form-button {
+    margin-top: 30px;
+    position: relative;
+    img {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      @include middleCenterPos();
+    }
+  }
+}
+
+.welcome-greeting {
+    display: none;
+    position: absolute;
+    top: 50%;
+    left: 0;
+    width: 100%;
+    @include middlePos();
+    .greeting-box {
+        padding-left: 75px;
+        padding-right: 75px;
+        .box {
+            padding: 10px 20px;
+        }
+    }
+    .title {
+        margin-top: 10px;
+        strong{
+            font-weight: bold;
+        }
+
+    }
+}
+
+// Small grid
+@media (min-width: $screen-sm-min) {
+    .uii-login {
+        .welcome-greeting {
+            display: block;
+            padding-right: 300px;
+            .greeting-box{
+              padding-left: 30px;
+              padding-right: 30px;
+            }
+            .title{
+                font-size: 50px;
+                strong{
+                    font-size: 62px;
+                }
+            }
+        }
+        .form-box {
+            width: 300px;
+        }
+    }
+}
+
+// Medium grid
+@media (min-width: $screen-md-min) {
+    .uii-login {
+        .welcome-greeting {
+            padding-right: 400px;
+            .greeting-box{
+              padding-left: 45px;
+              padding-right: 45px;
+            }
+            .title{
+                font-size: 68px;
+                strong{
+                    font-size: 72px;
+                }
+            }
+        }
+        .form-box {
+            width: 400px;
+        }
+    }
+}
+
+// Large grid
+@media (min-width: $screen-lg-min) {
+    .uii-login {
+        .welcome-greeting {
+            .greeting-box {
+                padding-left: 100px;
+                padding-right: 100px;
+            }
+        }
+    }
+}
+
+// link lupa password
+a{
+    cursor: pointer;
+}

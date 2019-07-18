@@ -1,0 +1,74 @@
+<h4 class="content-header-title">Component - Dropdown</h4>
+<div class="content-body">
+  <h2>Usage</h2>
+  <p>Import <code>BsDropdownModule</code> in your file <code>*.component.ts</code>.</p>
+  <div class="box-usage" [innerHtml]="docUsage"></div>
+
+  <h2>Basic</h2>
+  <div class="box-demo">
+    <div class="btn-group" dropdown>
+      <button dropdownToggle type="button" class="btn btn-primary dropdown-toggle">
+        Button dropdown <span class="caret"></span>
+      </button>
+      <ul *dropdownMenu class="dropdown-menu" role="menu">
+        <li role="menuitem"><a class="dropdown-item" href="#">Action</a></li>
+        <li role="menuitem"><a class="dropdown-item" href="#">Another action</a></li>
+        <li role="menuitem"><a class="dropdown-item" href="#">Something else here</a></li>
+        <li class="divider dropdown-divider"></li>
+        <li role="menuitem"><a class="dropdown-item" href="#">Separated link</a>
+        </li>
+      </ul>
+    </div>
+    <p></p>
+  </div>
+  <div class="box-example">
+    <tabset>
+      <tab heading='template'>
+        <div class="box-template" [innerHTML]="basicTemplate"></div>
+      </tab>
+      <tab heading="component">
+        <div class="box-component" [innerHtml]="basicComponent"></div>
+      </tab>
+    </tabset>
+  </div>
+
+  <h2>Variations</h2>
+  <div class="box-demo">
+    <div class="btn-group" dropdown>
+      <button dropdownToggle type="button" class="btn btn-primary dropdown-toggle">
+        Dropdown with header & footer <span class="caret"></span>
+      </button>
+      <div *dropdownMenu class="dropdown-menu" role="menu">
+        <div class="dropdown-header">
+          Header
+        </div>
+        <div class="dropdown-content">
+          <ul class="list-unstyled" role="menu">
+            <li role="menuitem"><a class="dropdown-item" href="#">Action</a></li>
+            <li role="menuitem"><a class="dropdown-item" href="#">Another action</a></li>
+            <li role="menuitem"><a class="dropdown-item" href="#">Something else here</a></li>
+            <li class="divider dropdown-divider"></li>
+            <li role="menuitem"><a class="dropdown-item" href="#">Separated link</a>
+            </li>
+          </ul>
+        </div>
+        <div class="dropdown-footer">
+          Footer
+        </div>
+      </div>
+    </div>
+    <p></p>
+  </div>
+  <div class="box-example">
+    <tabset>
+      <tab heading='template'>
+        <div class="box-template" [innerHTML]="variationsTemplate"></div>
+      </tab>
+      <tab heading="component">
+        <div class="box-component" [innerHtml]="variationsComponent"></div>
+      </tab>
+    </tabset>
+  </div>
+
+  <h4 class="text-center">For more options you can see on <a href="https://valor-software.com/ngx-bootstrap/#/dropdowns" target="_blank">ngx-bootstrap</a></h4>
+</div>

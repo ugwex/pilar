@@ -1,0 +1,22 @@
+<div class="form-upload-image">
+  <div class="form-upload-image-input">
+      <label class="control-label" for="">{{ label }}</label>
+      <label class="btn btn-primary form-control-file">
+        {{ 'Pilih gambar' | translate }} <input type="file" (change)="onFileChange($event)" #fileInput>
+      </label>
+      <div class="control-note">
+        <p>Format {{ fileTypeAllowed }} <br /> Maksimal {{ maxFileSize | fileSize:'MB' }}</p>
+      </div>
+  </div>
+  <div class="form-upload-image-preview">
+    <img src="{{ imageBase64 }}" alt="">
+  </div>
+</div>
+<div class="failed-upload-photo">
+  <small *ngIf="fileOversize" class="text-danger">
+    {{ 'file oversize' | translate }}
+  </small>
+  <small *ngIf="fileNotAllowed" class="text-danger">
+    {{ 'file not allowed' | translate }}
+  </small>
+</div>

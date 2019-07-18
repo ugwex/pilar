@@ -1,0 +1,236 @@
+<div class="datatable">
+    <div *ngIf="searchOptions || limitOptions" class="datatable-options">
+        <div class="row">
+            <div class="col-xs-12 col-sm-6">
+                <div *ngIf="limitOptions" class="datatable-limit">
+                    <label>
+                        Tampilkan
+                        <select name="datatable-select" class="form-control" (change)="limitChange($event)">
+                            <option *ngFor="let option of limitOpts" [value]="option.value">{{ option.label }}</option>
+                        </select>
+                        data
+                    </label>
+                </div>
+            </div>
+            <div class="col-xs-12 col-sm-6">
+                <div *ngIf="searchOptions" class="datatable-search">
+                    <div *ngIf="serverMode" class="input-group">
+                        <input #searchInput type="text" class="form-control" placeholder="{{ 'search' | translate }}" (keyup.enter)="searchChange(searchInput.value)">
+                        <span class="input-group-btn">
+                            <button class="btn btn-primary" type="button" (click)="searchChange(searchInput.value)">
+                                <span class="fa fa-search"></span>
+                            </button>
+                        </span>
+                    </div>
+                    <!-- /input-group -->
+
+                    <div *ngIf="!serverMode" class="input-group">
+                        <input #searchInput type="text" class="form-control" placeholder="{{ 'search' | translate }}" (keyup)="updateFilter(searchInput.value)">
+                        <span class="input-group-btn">
+                            <button class="btn btn-primary" type="button" (click)="updateFilter(searchInput.value)">
+                                <span class="fa fa-search"></span>
+                            </button>
+                        </span>
+                    </div>
+                    <!-- /input-group -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div *ngIf="serverMode" class="datatable-data server-mode">
+        <ngx-datatable class="bootstrap" [rows]="rows" [columnMode]="'force'" [footerHeight]="50" [rowHeight]="'auto'" [externalPaging]="true"
+            [count]="page.totalElements" [offset]="page.pageNumber" [limit]="page.size" [selectionType]="'checkbox'" [selected]="selected"
+            [selectAllRowsOnPage]="true" [displayCheck]="displayCheck" [messages]="{emptyMessage: 'no data to display' | translate}"
+            (page)='pageChange($event)' (select)='selectClick($event)'>
+            <ngx-datatable-column *ngIf="radioActiveOptions" name="{{ 'active' | translate }}" [maxWidth]="50">
+                <ng-template let-row="row" let-value="value" ngx-datatable-cell-template>
+                    <div class="abc-radio abc-radio-success abc-radio-table">
+                        <input type="radio" name="radio" [attr.id]="'checkbox-'+row.uuid" [ngClass]="row.flag_aktif === '1' ? 'aktif' : 'non'" [checked]="row.flag_aktif === '1'"
+                            (change)="radioChange(row)">
+                        <label [attr.for]="'checkbox-'+row.uuid"></label>
+                    </div>
+                </ng-template>
+            </ngx-datatable-column>
+            <ngx-datatable-column *ngIf="radioSelectAllOptions" [maxWidth]="30" [headerCheckboxable]="true" [checkboxable]="true" class="abc-checkbox abc-checkbox-success">
+                <ng-template let-row="row" let-value="value" ngx-datatable-cell-template></ng-template>
+            </ngx-datatable-column>
+
+            <ngx-datatable-column *ngFor="let columnObj of columns" name="{{ columnObj.name }}" prop="{{ columnObj.prop }}" [maxWidth]="columnObj.prop && columnObj.prop === 'number' ? 40 :(columnObj.width ? columnObj.width : '')">
+                <ng-template let-column="column" let-sort="sortFn" ngx-datatable-header-template>
+                    <span (click)="sort()">{{ column.name }}</span>
+                </ng-template>
+
+                <ng-template *ngIf="columnObj.type && columnObj.type === 'number'" let-rowIndex="rowIndex" ngx-datatable-cell-template>
+                    {{ rowIndex + 1 }}
+                </ng-template>
+                <ng-template *ngIf="columnObj.type && columnObj.type === 'date' && !columnObj.format" let-row="row" let-value="value" ngx-datatable-cell-template>
+                    {{ value | date: 'dd MMMM y' }}
+                </ng-template>
+                <ng-template *ngIf="columnObj.type && columnObj.type === 'date' && columnObj.format" let-row="row" let-value="value" ngx-datatable-cell-template>
+                    {{ value | date: columnObj.format }}
+                </ng-template>
+                <ng-template *ngIf="columnObj.type && columnObj.type === 'label'" let-row="row" let-value="value" ngx-datatable-cell-template>
+                    <span class="label" [ngClass]="row.class">{{ value }}</span>
+                </ng-template>
+                <ng-template *ngIf="columnObj.type && columnObj.type === 'html'" let-row="row" let-value="value" ngx-datatable-cell-template>
+                    <span [innerHTML]="value"></span>
+                </ng-template>
+                <ng-template *ngIf="!columnObj.type" let-row="row" let-value="value" ngx-datatable-cell-template>
+                    {{ value }}
+                </ng-template>
+            </ngx-datatable-column>
+
+            <ngx-datatable-column *ngIf="actionColumn" name="{{ 'action' | translate }}" [maxWidth]="actionColumnWidth">
+                <ng-template let-column="column" let-sort="sortFn" ngx-datatable-header-template>
+                    <div class="text-center">{{ 'action' | translate }}</div>
+                </ng-template>
+                <ng-template let-row="row" let-value="value" ngx-datatable-cell-template>
+                    <div class="action-column text-center">
+                        <a *ngIf="row.auth && row.auth.canPublish" class="icon-action icon-primary edit" (click)="publishClick(row)" tooltip="Terbitkan">
+                            <span class="fa fa-arrow-circle-up"></span>
+                        </a>
+                        <a *ngIf="row.auth && row.auth.canUpdate" class="icon-action icon-primary edit" (click)="editClick(row)" tooltip="Edit">
+                            <span class="fa fa-pencil"></span>
+                        </a>
+                        <a *ngIf="row.auth && row.auth.canRead" class="icon-action icon-primary validation" (click)="detailClick(row)" tooltip="Detail">
+                            <span class="material-icons">visibility</span>
+                        </a>
+                        <a *ngIf="row.auth && row.auth.canDelete" class="icon-action icon-primary delete" (click)="deleteClick(row)" tooltip="Hapus">
+                            <span class="fa fa-trash"></span>
+                        </a>
+                        <a *ngIf="row.auth && row.auth.canVerify" class="icon-action icon-primary comment" (click)="verifyClick(row)" tooltip="Verifikasi">
+                            <span class="fa fa-comment"></span>
+                        </a>
+                        <a *ngIf="row.auth && row.auth.canValidate" class="icon-action icon-primary validation" (click)="validateClick(row)" tooltip="Validasi">
+                            <span class="material-icons">playlist_add_check</span>
+                        </a>
+                        <a *ngIf="row.auth && row.auth.canPrint" class="icon-action icon-primary print" (click)="printClick(row)" tooltip="Cetak">
+                            <span class="fa fa-print"></span>
+                        </a>
+                        <a *ngIf="actionRepeat === true" class="icon-action icon-primary print" (click)="reloadClick(row)" tooltip="Muat ulang">
+                            <span class="fa fa-repeat"></span>
+                        </a>
+                        <a *ngIf="actionInValidation === true" class="icon-action icon-primary print" (click)="inValidateClick(row)" tooltip="Batalkan validasi">
+                            <span class="fa fa-lock"></span>
+                        </a>
+                        <span *ngIf="row.auth && row.auth.canActivate" class="icon-action onoff">
+                            <ui-switch size="small" [color]="'#093697'" [checked]="row.is_active === 1 || row.flag_aktif === 1 ? true : false" (change)="switchChange($event, row)"></ui-switch>
+                        </span>
+                    </div>
+                </ng-template>
+            </ngx-datatable-column>
+        </ngx-datatable>
+        <div class="datatable-page-message">
+            <div class="page-counter">
+                Menampilkan {{ getPageStart(page) }} sampai {{ getPageEnd(page) }} dari {{ getTotalCount(page) }} Data
+            </div>
+        </div>
+    </div>
+
+    <div *ngIf="!serverMode" class="datatable-data client-mode">
+        <ngx-datatable #clientDataTable class="bootstrap" [rows]="rows" [columnMode]="'force'" [footerHeight]="'auto'" [rowHeight]="'auto'"
+            [limit]="page.size" [selectionType]="'checkbox'" [selected]="selected" [selectAllRowsOnPage]="true" [displayCheck]="displayCheck"
+            [messages]="{emptyMessage: 'no data to display' | translate}" (select)="selectClick($event)">
+
+            <ngx-datatable-column *ngIf="radioActiveOptions" name="{{ 'active' | translate }}" [width]="50">
+                <ng-template let-row="row" let-value="value" ngx-datatable-cell-template>
+                    <div class="abc-checkbox abc-checkbox-success">
+                        <input type="radio" name="radio" [attr.id]="'checkbox-'+row.uuid" [ngClass]="row.flag_aktif === '1' ? 'aktif' : 'non'" [checked]="row.flag_aktif === '1'"
+                            (change)="radioChange(row)">
+                        <label [attr.for]="'checkbox-'+row.uuid"></label>
+                    </div>
+                </ng-template>
+            </ngx-datatable-column>
+
+            <ngx-datatable-column *ngIf="radioSelectAllOptions" [width]="30" [sortable]="false" [canAutoResize]="false" [draggable]="false"
+                [resizeable]="false" [headerCheckboxable]="true" [checkboxable]="true" class="abc-checkbox abc-checkbox-success">
+                <ng-template let-row="row" let-value="value" ngx-datatable-cell-template></ng-template>
+            </ngx-datatable-column>
+
+            <ngx-datatable-column *ngFor="let columnObj of columns" name="{{ columnObj.name }}" prop="{{ columnObj.prop }}" [maxWidth]="columnObj.prop && columnObj.prop === 'number' ? 40 :(columnObj.width ? columnObj.width : '')">
+                <ng-template let-column="column" let-sort="sortFn" ngx-datatable-header-template>
+                    <span (click)="sort()">{{ column.name }}</span>
+                </ng-template>
+
+                <ng-template *ngIf="columnObj.type && columnObj.type === 'number'" let-rowIndex="rowIndex" ngx-datatable-cell-template>
+                    {{ rowIndex + 1 }}
+                </ng-template>
+                <ng-template *ngIf="columnObj.type && columnObj.type === 'date' && !columnObj.format" let-row="row" let-value="value" ngx-datatable-cell-template>
+                    {{ value | date: 'dd MMMM y' }}
+                </ng-template>
+                <ng-template *ngIf="columnObj.type && columnObj.type === 'date' && columnObj.format" let-row="row" let-value="value" ngx-datatable-cell-template>
+                    {{ value | date: columnObj.format }}
+                </ng-template>
+                <ng-template *ngIf="columnObj.type && columnObj.type === 'label'" let-row="row" let-value="value" ngx-datatable-cell-template>
+                    <span class="label" [ngClass]="row.class">{{ value }}</span>
+                </ng-template>
+                <ng-template *ngIf="columnObj.type && columnObj.type === 'html'" let-row="row" let-value="value" ngx-datatable-cell-template>
+                    <span [innerHTML]="value"></span>
+                </ng-template>
+                <ng-template *ngIf="!columnObj.type" let-row="row" let-value="value" ngx-datatable-cell-template>
+                    {{ value }}
+                </ng-template>
+            </ngx-datatable-column>
+
+            <ngx-datatable-column *ngIf="actionColumn" name="{{ 'action' | translate }}">
+                <ng-template let-column="column" ngx-datatable-header-template>
+                    <div class="text-center">{{ 'action' | translate }}</div>
+                </ng-template>
+                <ng-template let-row="row" let-value="value" ngx-datatable-cell-template>
+                    <div class="action-column text-center">
+                        <a *ngIf="row.auth && row.auth.canPublish" class="icon-action icon-primary edit" (click)="publishClick(row)" tooltip="Terbitkan">
+                            <span class="fa fa-arrow-circle-up"></span>
+                        </a>
+                        <a *ngIf="row.auth && row.auth.canUpdate" class="icon-action icon-primary edit" (click)="editClick(row)" tooltip="Edit">
+                            <span class="fa fa-pencil"></span>
+                        </a>
+                        <a *ngIf="row.auth && row.auth.canRead" class="icon-action icon-primary validation" (click)="detailClick(row)" tooltip="Detail">
+                            <span class="material-icons">visibility</span>
+                        </a>
+                        <a *ngIf="row.auth && row.auth.canDelete" class="icon-action icon-primary delete" (click)="deleteClick(row)" tooltip="Hapus">
+                            <span class="fa fa-trash"></span>
+                        </a>
+                        <a *ngIf="row.auth && row.auth.canVerify" class="icon-action icon-primary comment" (click)="verifyClick(row)" tooltip="Verifikasi">
+                            <span class="fa fa-comment"></span>
+                        </a>
+                        <a *ngIf="row.auth && row.auth.canValidate" class="icon-action icon-primary validation" (click)="validateClick(row)" tooltip="Validasi">
+                            <span class="material-icons">playlist_add_check</span>
+                        </a>
+                        <a *ngIf="row.auth && row.auth.canPrint" class="icon-action icon-primary print" (click)="printClick(row)" tooltip="Cetak">
+                            <span class="fa fa-print"></span>
+                        </a>
+                        <a *ngIf="actionRepeat === true" class="icon-action icon-primary print" (click)="reloadClick(row)" tooltip="Muat ulang">
+                            <span class="fa fa-repeat"></span>
+                        </a>
+                        <a *ngIf="actionInValidation === true" class="icon-action icon-primary print" (click)="inValidateClick(row)" tooltip="Batalkan validasi">
+                            <span class="fa fa-lock"></span>
+                        </a>
+                        <span *ngIf="row.auth && row.auth.canActivate" class="icon-action onoff">
+                            <ui-switch size="small" [color]="'#093697'" [checked]="row.is_active === 1 || row.flag_aktif === 1 ? true : false" (change)="switchChange($event, row)"></ui-switch>
+                        </span>
+                    </div>
+                </ng-template>
+            </ngx-datatable-column>
+
+            <ngx-datatable-footer>
+                <ng-template ngx-datatable-footer-template let-rowCount="rowCount" let-pageSize="pageSize" let-selectedCount="selectedCount"
+                    let-curPage="curPage" let-offset="offset" let-isVisible="isVisible">
+                    <div class="datatable-page-message">
+                        <div class="page-counter">
+                            Menampilkan {{ getPageStart({pageNumber: (curPage - 1), size: pageSize, totalElements: rowCount}) }} sampai {{ getPageEnd({pageNumber:
+                            (curPage - 1), size: pageSize, totalElements: rowCount}) }} dari {{ getTotalCount({pageNumber:
+                            (curPage - 1), size: pageSize, totalElements: rowCount}) }} Data
+                        </div>
+                    </div>
+                    <div class="datatable-page">
+                        <datatable-pager [pagerLeftArrowIcon]="'datatable-icon-left'" [pagerRightArrowIcon]="'datatable-icon-right'" [pagerPreviousIcon]="'datatable-icon-prev'"
+                            [pagerNextIcon]="'datatable-icon-skip'" [page]="curPage" [size]="pageSize" [count]="rowCount" [hidden]="!((rowCount / pageSize) > 1)"
+                            (change)="clientDataTable.onFooterPage($event)">
+                        </datatable-pager>
+                    </div>
+                </ng-template>
+            </ngx-datatable-footer>
+        </ngx-datatable>
+    </div>
+</div>

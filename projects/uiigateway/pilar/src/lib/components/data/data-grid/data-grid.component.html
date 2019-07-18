@@ -1,0 +1,26 @@
+<div class="datagrid">
+  <table class="table table-bordered">
+    <thead>
+      <tr class="active">
+        <th>
+          <div class="text-center" style="margin: auto; width: 100px;">{{ gridTitle }}</div>
+        </th>
+        <th *ngFor="let colTitle of columnTitle">
+          <div class="text-center" style="width: 300px;">{{ colTitle }}</div>
+        </th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let rTitle of rowTitle" style="height: 100px;">
+        <th class="text-center active" style="vertical-align: middle;">{{ rTitle }}</th>
+        <td *ngFor="let colTitle of columnTitle" style="width: 300px;">
+          <ng-container *ngIf="data[rTitle]">
+            <ng-container *ngIf="data[rTitle][colTitle]">
+              <span class="text-center" [innerHTML]="data[rTitle][colTitle]"></span>
+            </ng-container>
+          </ng-container>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

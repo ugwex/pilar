@@ -1,0 +1,18 @@
+<div class="wrapper-fw not-404-found padding-bottom-50">
+  <div class="logo-fw">
+    <a [routerLink]="['/']">
+      <img src="assets/images/uii-logo-pyramid.png" alt="UII Logo">
+    </a>
+  </div>
+
+  <div class="content-fw">
+    <div class="icon">
+      <h1 class="margin-50"style="font-size: 8em; color: #093697">{{ statusCode }}</h1>
+    </div>
+    <div class="text margin-bottom-55">
+      <h1 class="text-uppercase text-normal">TERJADI KESALAHAN</h1>
+      <p>Periksa kembali koneksi internet anda. Silahkan klik tombol ini untuk kembali</p>
+    </div>
+    <button class="btn btn-primary" [routerLink]="[backLink]">Kembali</button>
+  </div>
+</div>

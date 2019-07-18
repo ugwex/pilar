@@ -1,0 +1,32 @@
+<label class="control-label" [ngClass]="required ? 'control-required' : ''">{{ label }}</label>
+<div class="form-upload-photo" [ngStyle]="{'width': width, 'height': height}">
+  <div class="form-upload-photo-input">
+    <div class="control-label" [ngStyle]="isImageExist ? {'display': 'none'} : ''">
+        <label class="btn btn-primary form-control-file">
+            Unggah
+            <input #tagar type="file" (change)="onFileChange($event, index)" #fileInput>
+        </label>
+        <div class="control-note">
+          <p>Format<br/> {{ fileTypeAllowed }} <br /> Maksimal {{ maxFileSize | fileSize:maxFileType }}</p>
+      </div>
+    </div>
+  </div>
+  <div class="form-upload-photo-preview" [ngClass]="isImageExist ? 'showImage' : '' ">
+      <img src="{{ imageBase64 }}" alt="">
+      <div class="change-photo">
+          <span class="fa fa-edit" >
+            <input #tagar type="file" (change)="onFileChange($event, index)" #fileInput>
+          </span>
+          <span class="fa fa-times" (click)="onImageDelete()"></span>
+      </div>
+      
+  </div>
+  <div class="form-upload-photo-failed" [ngStyle]="{'top': height}">
+      <small *ngIf="fileOversize" class="text-danger">
+        {{ 'file oversize' | translate }}
+      </small>
+      <small *ngIf="fileNotAllowed" class="text-danger">
+          {{ 'file not allowed' | translate }}
+      </small>
+  </div>
+</div>

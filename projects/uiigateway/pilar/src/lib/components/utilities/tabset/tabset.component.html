@@ -1,0 +1,25 @@
+<ul class="ugw-tab-container">
+  <li *ngFor="let tabItem of tabs; let i = index"
+    [style.width.%]="(100 / tabs.length)"
+    [class.tab-active]="tabItem.active"
+    (click)="onTabClick(tabItem)">
+    <a href="javascript:void(0);">
+      <span class="tab-title-container">
+        <span 
+          *ngIf="tabItem.tabIcon"
+          class="tab-icon"
+          [ngClass]="tabItem.tabIcon ? tabItem.tabIcon : ''"
+          [class.hide-tab-icon]="tabMobileAttr === 'title'">
+        </span>
+        <span
+          class="tab-title"
+          [class.hide-tab-title]="tabMobileAttr === 'icon'">
+          {{tabItem.title}}</span>
+      </span>
+    </a>
+    <div class="tab-border" [style.width.%]="borderWidth()" [style.left.%]="getLeft()" ></div>
+  </li>
+</ul>
+<div class="tab-item-content">
+  <ng-content></ng-content>
+</div>

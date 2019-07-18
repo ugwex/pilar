@@ -1,0 +1,63 @@
+<h4 class="content-header-title">Component - Pagination</h4>
+<div class="content-body">
+  <h2>Usage</h2>
+  <p>Import <code>PilarModule</code> in your root module <code>*.app.module</code>.</p>
+  <div class="box-template" [innerHTML]="basicImportModule"></div>
+  <h2>Basic Pagination</h2>
+  <uii-pagination
+    [amountOfData]="100" [dataPerPage]="10" [paginationALign]="'left'" (pageChanged)="onPageChange($event)">
+  </uii-pagination>
+  <div class="box-example">
+    <tabset>
+      <tab heading='template'>
+        <div class="box-template" [innerHTML]="basicTemplate"></div>
+      </tab>
+      <tab heading="component">
+        <div class="box-component" [innerHtml]="basicComponent"></div>
+      </tab>
+    </tabset>
+  </div>
+  <h2>Position</h2>
+  <p>You can set the position of pagination</p>
+  <h4>Left</h4>
+  <uii-pagination
+    [amountOfData]="100" [dataPerPage]="10" [paginationALign]="'left'">
+  </uii-pagination>
+  <h4>Center</h4>
+  <uii-pagination
+    [amountOfData]="100" [dataPerPage]="10" [paginationALign]="'center'">
+  </uii-pagination>
+  <h4>Right</h4>
+  <uii-pagination
+    [amountOfData]="100" [dataPerPage]="10" [paginationALign]="'right'">
+  </uii-pagination>
+
+  <div class="box-example">
+    <tabset>
+      <tab heading='template'>
+        <div class="box-template" [innerHTML]="alignTemplate"></div>
+      </tab>
+      <tab heading="component">
+        <div class="box-component" [innerHtml]="alignComponent"></div>
+      </tab>
+    </tabset>
+  </div>
+  <h2>Page chaged event</h2>
+  <uii-pagination 
+    [amountOfData]="90" [dataPerPage]="10" [paginationALign]="'left'" (pageChanged)="onPageChange($event)" >
+  </uii-pagination>
+  <div class="well margin-top-20">
+    Page changed to : {{selectedPage}}
+  </div>
+  <div class="box-example">
+    <tabset>
+      <tab heading='template'>
+        <div class="box-template" [innerHTML]="pageChangeTemplate"></div>
+      </tab>
+      <tab heading="component">
+        <div class="box-component" [innerHtml]="pageChangeComponent"></div>
+      </tab>
+    </tabset>
+  </div>
+  <h2>Switch Page Manually</h2>
+</div>

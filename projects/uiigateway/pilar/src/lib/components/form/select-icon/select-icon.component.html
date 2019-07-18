@@ -1,0 +1,11 @@
+<div class="form-upload-image">
+  <div class="form-upload-image-input">
+      <label class="control-label" [ngClass]="{ 'control-required' : required }" for="">{{ 'icon' | translate }}</label>
+      <button type="button" class="btn btn-primary" (click)="onBtnSelectIconClick(iconName)">{{'choose icon' | translate}}</button>
+      <div class="control-note">
+      </div>
+  </div>
+  <div class="form-upload-image-preview">
+      <span class="{{ iconName }} icon-preview"></span>
+  </div>
+</div>

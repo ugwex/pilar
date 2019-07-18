@@ -1,0 +1,62 @@
+// Styling for the Slim Loading Progress Bar itself
+.slim-loading-bar{
+  position: absolute;
+  width: 100%;
+  top: 0;
+  left: 0;
+  z-index: 1;
+}
+.slim-loading-bar-progress {
+  margin: 0;
+  padding: 0;
+  z-index: 99998;
+  background-color: green;
+  color: green;
+  box-shadow: 0 0 10px 0; // Inherits the font color
+  height: 2px;
+  opacity: 0;
+
+  // Add CSS3 styles for transition smoothing
+  transition: all .5s ease-in-out;
+}
+
+.navbar{
+  background-color: $uii-navbar-bg;
+}
+
+.navbar-toggle{ 
+  .icon-bar {
+    background-color: $uii-navbar-toggle-bar-bg;
+  }
+}
+.navbar-nav{
+  .header-menu{
+    @media (max-width: $screen-sm-max){
+      &.open{
+        > .dropdown-menu{
+          background-color: $uii-navbar-dropdown-mobile-bg;
+          box-shadow: 0 6px 12px rgba(0, 0, 0, 0.175);
+        }
+      }
+    }
+  }
+}
+
+.header-menu__account{
+  .account-option{
+    color: $uii-account-option-cl;
+    &.account-logout{
+      color: $uii-account-logout-cl;
+    }
+  }
+  .account-info{
+    span{
+      &.id{
+        color: $uii-account-id-cl;
+      }
+      &.role{
+        color: $uii-account-role-cl;
+      }
+    }
+  }
+}

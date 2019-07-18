@@ -1,0 +1,20 @@
+<div class="modal-header">
+  <button type="button" class="close" aria-label="Close" (click)="activeModal.hide()">
+    <span aria-hidden="true">&times;</span>
+  </button>
+  <h5 class="modal-title">{{ 'choose icon' | translate }} </h5>
+</div>
+<div class="modal-body">
+  <div class="input-group">
+      <input #searchInput type="text" class="form-control" placeholder="{{ 'search icon' | translate }}" (keyup)="updateListOfIcon(searchInput.value)">
+      <span class="input-group-btn">
+          <button class="btn btn-primary" type="button">
+              <span class="fa fa-search"></span>
+          </button>
+      </span>
+  </div><br>
+  <button [tooltip]="icon.class" class="btn btn-success btn-select-icon" *ngFor="let icon of listOfIcon; let i=index " [ngClass]="iconSelected == icon.class ? 'selected-item':''" (click)="selected(i, icon.class)">
+    <span class="{{ icon.class }}" ></span>
+  </button>
+</div>
+

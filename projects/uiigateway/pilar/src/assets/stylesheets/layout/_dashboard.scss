@@ -1,0 +1,361 @@
+.wrapper-withsidebar .content {
+    padding-bottom: 0;
+}
+
+.dashboard .content-header h5 {
+    padding: 7px 0;
+}
+
+.dashboard .content-header .form-control {
+    margin: 7px 0;
+}
+
+.dashboard .form-control {
+    width: 100%;
+}
+
+.dashboard .optiongroup {
+    font-weight: bold;
+    padding-left: 10px;
+}
+
+@media (min-width: 768px) {
+    .dashboard .content-header .col-md-2,
+    .dashboard .content-header .col-md-4 {
+        padding: 0;
+    }
+    .dashboard .content-header .col-md-2 {
+        padding-right: 15px;
+    }
+    .dashboard .content-header .col-md-4 {
+        padding-left: 15px;
+        padding-right: 15px;
+    }
+}
+
+.dashboard .content-body .col-sm-6,
+.dashboard .content-body .col-xs-12 {
+    margin-bottom: 10px;
+}
+
+.dashboard .content-body h4 {
+    // color: #093697;
+    font-size: 12px;
+    padding-bottom: 5px;
+    margin: 0 0 5px 0;
+    border-bottom: 2px solid #979797;
+}
+
+.dashboard .content-body h4.text-center {
+    font-size: 18px;
+    border: none;
+    font-weight: bold;
+    margin-top: 10px;
+}
+
+.dashboard .content-body h4.text-center small {
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.dashboard .map {
+    margin-bottom: -20px;
+    height: 385px;
+    width: 100%;
+}
+
+.dashboard .chart {
+    height: 300px;
+    width: 100%;
+}
+
+.dashboard .spark-cont {
+    height: 45px;
+    display: inline-block;
+    width: 100%;
+}
+
+.dashboard .detail {
+    height: 400px;
+}
+
+.dashboard .fa {
+    margin-right: 5px;
+}
+
+.dashboard .count-info {
+    font-weight: bold;
+    font-size: 23px;
+}
+
+.dashboard .drilldown:hover {
+    cursor: pointer;
+    opacity: .7;
+}
+
+.dashboard .percent-info {
+    font-size: 12px;
+    padding: 1px;
+    font-weight: bold;
+    cursor: help;
+}
+
+.dashboard .form-inline .btn {
+    margin-top: 36px;
+    width: 100%;
+}
+
+// TABLE TITLE AND SUB TITLE STYLE
+.table-title{
+    font-family: 'Roboto', sans-serif;
+    font-size: 16px;
+    font-weight: bold;
+    text-align: center;
+}
+
+.table-sub-title{
+    font-size: 13px;
+    font-weight: bolder;
+    text-align: center;
+}
+// TABLE TITLE AND SUB TITLE STYLE
+// TABLE STYLE
+.table-data {
+    border: 1px solid #ddd;
+    margin-top: 10px;
+    font-size: 13px;
+    // width: 85%;
+    // margin: 0 auto;
+    // text-align: left;
+    // margin-top: 20px;
+    thead{
+        color: #093697;
+        th:first-child{
+            width: 5%;
+            vertical-align: middle;
+        }
+    }
+    tbody{
+        tr{
+            td{
+                padding-top: 15px;
+                padding-bottom: 15px;
+                text-align: left;
+            }
+        }
+    }
+}
+
+.table-data{
+    .trend-table-heading{
+        th{
+            vertical-align: middle;
+            border-right: 1px solid #ddd;
+        }
+        th:first-child{
+            border-right: 0;
+        }
+    }
+}
+
+.trend-table-body{
+    .organizations-list{
+        border-right: 1px solid #ddd;
+    }
+}
+
+.last-row{
+    font-weight: bold;
+    color: #093697;
+    td:first-child{ text-align: center; }
+}
+
+tfoot{
+    .last-row{
+        font-weight: bold;
+        color: #093697;
+        td:first-child{ text-align: center; }
+    }
+}
+
+// TABLE STYLE
+
+.dashboard .tooltip-inner {
+    padding: 10px;
+}
+
+.dashboard #tabel1 {
+    text-align: left;
+}
+
+.dashboard #tab1:checked~#content1,
+.dashboard #tab2:checked~#content2 {
+    display: block;
+}
+
+.dashboard #tab3:checked~#content3,
+.dashboard #tab4:checked~#content4 {
+    display: block;
+}
+
+.dashboard .input {
+    display: none;
+}
+
+.dashboard label {
+    display: inline-block;
+    margin: 0 0;
+    padding: 11px 32px;
+    text-align: center;
+    color: #093697;
+    font-weight: normal;
+}
+
+.dashboard .control-label {
+    display: inline-block;
+    padding: 0 1px;
+    margin-bottom: 5px;
+    cursor: default;
+    color: #555555;
+    font-weight: bold;
+}
+
+.dashboard .form-inline label {
+    color: #555;
+    padding: 10px 0;
+}
+
+.dashboard label:before {
+    font-weight: normal;
+    margin-right: 10px;
+}
+
+.dashboard label:hover {
+    color: #888;
+    cursor: pointer;
+}
+
+.dashboard input:checked+label {
+    color: #555;
+    color: #fff;
+    background-color: #093697;
+}
+
+.dashboard section {
+    display: none;
+    padding: 20px 0 0;
+}
+
+.dashboard .dropdown-menu {
+    top: 6%;
+}
+
+.dashboard .pull-right>.dropdown-menu {
+    right: 5%;
+    left: 5%;
+}
+
+.dashboard .mydropdown>li>a>.fa {
+    visibility: hidden;
+}
+
+.dashboard .mydropdown>li>a.selected>.fa {
+    visibility: visible;
+}
+
+.dashboard .my-class {
+    background-color: yellow;
+}
+
+.dashboard .ratio {
+    margin-top: 15px;
+}
+
+.dashboard .ratio-title {
+    font-size: 12px;
+    font-weight: 500;
+    vertical-align: middle;
+}
+
+.dashboard .ratio-info {
+    font-size: 35px;
+    font-weight: 600;
+    vertical-align: middle;
+}
+
+.dashboard .ratio-real .tendik,
+.dashboard .ratio-real .mhs {
+    margin-top: -10px;
+    padding: 2px;
+}
+
+.dashboard .mhs {
+    background-color: #26a69a;
+    color: #000000;
+}
+
+.dashboard .tendik {
+    background-color: #1c4cb4;
+    color: #ffffff;
+}
+
+.dashboard .ratio-real {
+    font-size: 12px;
+    font-weight: 500;
+}
+
+.dashboard .home {
+    margin: 0;
+    margin-bottom: 20px;
+}
+
+.dashboard .ta {
+    margin-bottom: 20px;
+}
+
+.dashboard .home .home-footer {
+    color: #fff;
+    background-color: #082e7f;
+    font-weight: bold;
+    padding: 10px;
+    font-size: 12px;
+}
+
+.dashboard .home .home-footer .fa {
+    font-size: 12px;
+}
+
+.dashboard .home .home-footer:hover {
+    color: #fff;
+    background-color: #093697;
+    cursor: pointer;
+}
+
+.dashboard .home-title {
+    color: #555555;
+    font-size: 12px;
+    padding-bottom: 0;
+    padding: 5px 10px;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+.dashboard .home-info {
+    background-color: #f5f5f5;
+    padding-top: 0;
+    color: #093697;
+    font-weight: 700;
+    font-size: 26px;
+    padding: 10px 20px;
+}
+
+.dashboard .home .fa {
+    margin: 0;
+    font-size: 36px;
+}
+
+.dashboard .home .tgl {
+    clear: both;
+    font-size: 12px;
+    margin-top: 3px;
+}

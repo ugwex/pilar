@@ -1,0 +1,65 @@
+<h4 class="content-header-title">Component - Alert</h4>
+<div class="content-body">
+  <h2>Usage</h2>
+  <p>Import <code>AlertModule</code> in your file <code>*.component.ts</code>.</p>
+  <div class="box-usage" [innerHtml]="docUsage"></div>
+
+  <h2>Basic</h2>
+  <div class="box-example">
+    <tabset>
+      <tab heading='Example'>
+        <alert type="success">
+          <strong>Well done!</strong> You successfully read this important alert message.
+        </alert>
+        <alert type="info">
+          <strong>Heads up!</strong> This alert needs your attention, but it's not super important.
+        </alert>
+        <alert type="warning">
+          <strong>Warning!</strong> Better check yourself, you're not looking too good.
+        </alert>
+        <alert type="danger">
+          <strong>Oh snap!</strong> Change a few things up and try submitting again.
+        </alert>
+      </tab>
+      <tab heading="How To Use">
+        <pre class="prettyprint lang-html">
+&lt;alert type="success"&gt;...&lt;/alert&gt;
+&lt;alert type="info"&gt;...&lt;/alert&gt;
+&lt;alert type="warning"&gt;...&lt;/alert&gt;
+&lt;alert type="danger"&gt;...&lt;/alert&gt;
+        </pre>
+      </tab>
+    </tabset>
+  </div>
+
+  <h2>Dismissing</h2>
+  <p>Alerts have <code>dismiss</code> option. Enabling it will show close button to the right of the alert. Just set option with <code>dismissible="true"</code> or with variable <code>[dismissible]="dismissible"</code></p>
+  <div class="box-example">
+    <tabset>
+      <tab heading='Example'>
+        <alert type="success" dismissible="true">
+          <strong>Well done!</strong> You successfully read this important alert message.
+        </alert>
+        <alert type="info" [dismissible]="dismissible">
+          <strong>Heads up!</strong> This alert needs your attention, but it's not super important.
+        </alert>
+        <alert type="warning" [dismissible]="dismissible">
+          <strong>Warning!</strong> Better check yourself, you're not looking too good.
+        </alert>
+        <alert type="danger" [dismissible]="dismissible">
+          <strong>Oh snap!</strong> Change a few things up and try submitting again.
+        </alert>
+      </tab>
+      <tab heading="How To Use">
+        <pre class="prettyprint lang-html">
+&lt;alert type="success" [dismissible]="dismissible"&gt;...&lt;/alert&gt;
+&lt;alert type="info" dismissible="true"&gt;...&lt;/alert&gt;
+&lt;alert type="warning" [dismissible]="dismissible"&gt;...&lt;/alert&gt;
+&lt;alert type="danger" dismissible="true"&gt;...&lt;/alert&gt;
+        </pre>
+      </tab>
+    </tabset>
+  </div>
+
+  <h4 class="text-center">For more options you can see on <a href="https://valor-software.com/ngx-bootstrap/#/alerts" target="_blank">ngx-bootstrap</a></h4>
+</div>

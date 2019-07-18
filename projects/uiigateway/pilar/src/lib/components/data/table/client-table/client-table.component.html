@@ -1,0 +1,106 @@
+<uii-table-filter
+  [limitOptions]="limitOptions"
+  [searchOptions]="searchOptions"
+  (limitChanged)="onLimitChange($event)"
+  (searchChanged)="onSearchChange($event)">
+</uii-table-filter>
+<div class="gateway-table">
+  <div class="gateway-table-header">
+    <div class="header-cell cell-radio-checkbox" *ngIf="checkboxColumn">
+      <div class="gateway-rcb">
+        <input type="checkbox" (change)="selectAllRows = !selectAllRows; onRowSelect('multiple', $event)" id="aba" class="gateway-rcb-select" />
+        <p for="aba" class="gateway-rcb-label"></p>
+      </div>
+    </div>
+    <div class="header-cell cell-radio-checkbox" *ngIf="radioColumn"></div>
+    <div *ngFor="let column of _columns; let idx = index;" class="header-cell" [class.cell-number]="column.prop === 'number'">
+      <span
+        class="cell order-able"
+        (click)="sortTableColumn(column, idx)"
+        [ngClass]="(column.sort === 'asc') ? 'icon-up' : column.sort === 'desc' ? 'icon-down' : ''">{{column.name}}</span>
+    </div>
+    <div *ngIf="actionColumn" class="header-cell cell-action">
+      <span>{{actionTitle}}</span>
+    </div>
+  </div>
+  <uii-mobile-filter
+    [checkboxColumn]="checkboxColumn"
+    [columns]="_columns"
+    [limitOptions]="limitOptions"
+    [searchOptions]="searchOptions"
+    (limitChanged)="onLimitChange($event)"
+    (searchChanged)="onSearchChange($event)"
+    (selectAllRows)="onRowSelectMobile($event)"
+    (columnSorted)="sortTableColumnMobile($event)">
+  </uii-mobile-filter>
+  <div *ngFor="let item of _rows; let i = index" class="row-container">
+    <div class="cell-radio-checkbox-mobile" *ngIf="checkboxColumn">
+      <div class="gateway-rcb">
+        <input type="checkbox" [checked]="selectAllRows" (change)="selectAllRows = !selectAllRows; onRowSelect('single', $event, item)" class="gateway-rcb-select" />
+        <p for="aba" class="gateway-rcb-label"></p>
+      </div>
+    </div>
+    <div class="cell-radio-checkbox-mobile" *ngIf="radioColumn">
+      <div class="gateway-rcb">
+        <input type="radio" name="mtable-radio-item" [attr.id]="'mitem-'+ i" [checked]="item.flag_aktif === '1'" (change)="onRadioSelect(item)" class="gateway-rcb-select" />
+        <p class="gateway-rcb-label radio-label"></p>
+      </div>
+    </div>
+    <div class="gateway-table-data">
+      <div class="data-cell cell-radio-checkbox" *ngIf="checkboxColumn">
+        <div class="gateway-rcb">
+          <input type="checkbox" [checked]="selectAllRows" (change)="onRowSelect('single', $event, item)" class="gateway-rcb-select" />
+          <p for="aba" class="gateway-rcb-label"></p>
+        </div>
+      </div>
+      <div class="data-cell cell-radio-checkbox" *ngIf="radioColumn">
+        <div class="gateway-rcb">
+          <input type="radio" name="table-radio-item" [attr.id]="'item-'+ i" [checked]="item.flag_aktif === '1'" (change)="onRadioSelect(item)" class="gateway-rcb-select" />
+          <p class="gateway-rcb-label radio-label"></p>
+        </div>
+      </div>
+      <ng-container *ngFor="let column of _columns">
+        <div class="data-cell" [ngClass]="(actionColumn) ? 'inaction' : 'outaction'" [class.hide-in-mobile]="column.hasOwnProperty('hide_in_mobile') && column.hide_in_mobile">
+          <div class="mobile-view-header">
+            <span>{{column.name}}</span>
+          </div>
+          <div class="table-small-content">
+            <ng-container *ngIf="column.hasOwnProperty('type')">
+              <span *ngIf="column.type === 'label'" class="cell-label" [ngClass]="item.class">{{item[column.prop.toString()]}}</span>
+              <span *ngIf="column.type === 'html'" class="cell-html" [innerHTML]="item[column.prop.toString()]"></span>
+              <span *ngIf="column.type === 'date' && !column.format">{{item[column.prop.toString()] | date: 'dd MMMM y'}}</span>
+            </ng-container>
+            <ng-container *ngIf="!column.hasOwnProperty('type')">
+              <span class="cell">{{item[column.prop.toString()]}}</span>
+            </ng-container>
+          </div>
+        </div>
+      </ng-container>
+      <div class="data-cell data-cell-action" [ngClass]="(actionColumn) ? 'inaction' : 'outaction'" *ngIf="actionColumn">
+        <div class="mobile-view-header"><span>{{actionTitle}}</span></div>
+        <div class="table-small-content">
+          <span>
+            <uii-table-action
+              [index]="i"
+              [item]="item"
+              [auth]="item.auth"
+              [actionInValidation]="actionInValidation"
+              (emitAction)="mapActions($event)">
+            </uii-table-action>
+          </span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="gateway-empty-data" *ngIf="_rowsTemp === undefined || _rowsTemp.length === 0">
+  <span>Tidak ada data yang ditampilkan</span>
+</div>
+<uii-table-footer
+  [footerInfo]="footerInfo"
+  [paginationOptions]="paginationOptions"
+  [totalElements]="page.totalElements"
+  [startPage]="getStartPage(page)"
+  [endPage]="getEndPage(page)"
+  (pageChanged)="onPageChange($event)">
+</uii-table-footer>

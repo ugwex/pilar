@@ -1,0 +1,48 @@
+<div class="datalist">
+  <div *ngIf="searchOptions || limitOptions" class="datalist-options">
+    <div class="row">
+      <div class="col-xs-12 col-sm-6">
+        <div *ngIf="limitOptions" class="datalist-limit">
+          <label>
+            Tampilkan
+            <select name="datalist-select" class="form-control" (change)="limitChange($event)">
+              <option *ngFor="let option of limitOpts" [value]="option.value">{{ option.label }}</option>
+            </select>
+            data
+          </label>
+        </div>
+      </div>
+      <div class="col-xs-12 col-sm-6">
+        <div *ngIf="searchOptions" class="datalist-search">
+          <div class="input-group">
+            <input #searchInput type="text" class="form-control" placeholder="{{ 'search' | translate }}" (keyup)="updateFilter(searchInput.value)">
+            <span class="input-group-btn">
+              <button class="btn btn-primary" type="button" (click)="updateFilter(searchInput.value)">
+                <span class="fa fa-search"></span>
+              </button>
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="datalist-data">
+    <ngx-datatable 
+      #clientDataList 
+      class="bootstrap" 
+      [rows]="rows" 
+      [columnMode]="'force'" 
+      [footerHeight]="'auto'" 
+      [rowHeight]="'auto'"
+      [limit]="page.size"
+      [messages]="{emptyMessage: 'no data to display' | translate}">
+      <ngx-datatable-column name="list" prop="list">
+        <ng-template let-row="row" let-value="value" ngx-datatable-cell-template>
+          <h5 class="datalist-title">{{ value.title }}</h5>
+          <p class="datalist-note" *ngIf="!value.type">{{ value.note }}</p>
+          <div *ngIf="value.type && value.type === 'html'" class="datalist-note" [innerHTML]="value.note" style="white-space: pre-line;"></div>
+        </ng-template>
+      </ngx-datatable-column>
+    </ngx-datatable>
+  </div>
+</div>

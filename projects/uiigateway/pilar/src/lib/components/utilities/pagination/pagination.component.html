@@ -1,0 +1,21 @@
+<div *ngIf="amountOfData > dataPerPage" class="ugw-pagination-container" [ngClass]="paginationALign">
+  <ul class="ugw-pagination-list">
+    <li class="page-box" [class.disabled-box]="selectedPage === 1" (click)="onPageSelect(1)">
+      <span class="nav-icon ugw-page-first fa fa-angle-double-left"></span>
+    </li>
+    <li class="page-box" [class.disabled-box]="selectedPage === 1" (click)="onPageSelect(selectedPage - 1)">
+      <span class="nav-icon ugw-page-prev fa fa-angle-left"></span>
+    </li>
+    <ng-container *ngFor="let page of pages; let i = index">
+      <li class="page-box" [class.active]="page.active" (click)="onPageSelect(page.value)">
+        <span>{{page.label}}</span>
+      </li>
+    </ng-container>
+    <li class="page-box" [class.disabled-box]="selectedPage === pageTotal" (click)="onPageSelect(selectedPage + 1)">
+      <span class="nav-icon ugw-page-next fa fa-angle-right"></span>
+    </li>
+    <li class="page-box" [class.disabled-box]="selectedPage === pageTotal" (click)="onPageSelect(pageTotal)">
+      <span class="nav-icon ugw-page-last fa fa-angle-double-right"></span>
+    </li>
+  </ul>
+</div>

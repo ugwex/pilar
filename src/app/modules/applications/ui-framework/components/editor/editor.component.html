@@ -1,0 +1,43 @@
+<h4 class="content-header-title">Component - Editor</h4>
+<div class="content-body">
+  <h2>Basic</h2>
+  <p>Use tag <code>&lt;uii-editor&gt;</code>, this tag required attribute <code>elementId</code></p>
+  <div class="box-demo margin-bottom-20">
+    <uii-editor elementId="example-editor"></uii-editor>
+  </div>
+  <div class="box-example">
+    <tabset>
+      <tab heading='template'>
+        <div class="box-template" [innerHTML]="basicTemplate"></div>
+      </tab>
+      <tab heading="component">
+        <div class="box-component" [innerHtml]="basicComponent"></div>
+      </tab>
+    </tabset>
+  </div>
+
+  <h2>Reactive Form</h2>
+  <div class="box-demo margin-bottom-20">
+    <form [formGroup]="exampleForm">
+      <uii-editor 
+        elementId="example-reactive" 
+        [group]="exampleForm" 
+        [controlName]="'example_control'" 
+        [content]="exampleEditorContent"
+        (editorContentChanged)="onEditorContentChanged($event)" 
+        (editorBlured)="onEditorBlured()"></uii-editor>
+    </form>
+    <div class="well margin-top-30" [innerHTML]="editorContent"></div>
+  </div>
+  <div class="box-example">
+    <tabset>
+      <tab heading='template'>
+        <div class="box-template" [innerHTML]="variationsTemplate"></div>
+      </tab>
+      <tab heading="component">
+        <div class="box-component" [innerHtml]="variationsComponent"></div>
+      </tab>
+    </tabset>
+  </div>
+
+</div>

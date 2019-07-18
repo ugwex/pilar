@@ -1,0 +1,13 @@
+<div class="breadcrumb-wrapper">
+    <ol class="breadcrumb">
+        <li>
+            <a routerLink="">
+                <span class="fa fa-home"></span>
+            </a>
+        </li>
+        <li *ngFor="let breadcrumb of breadcrumbs; let i = index">
+            <span *ngIf="i === (breadcrumbs.length - 1)">{{ breadcrumb.label }}</span>
+            <a *ngIf="i !== (breadcrumbs.length - 1)" [routerLink]="[breadcrumb.url, breadcrumb.params]">{{ breadcrumb.label }}</a>
+        </li>
+    </ol>
+</div>

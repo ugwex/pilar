@@ -1,0 +1,21 @@
+<div class=apps-search>
+    <form>
+        <div class="input-group input-group-search input-group-default">
+            <input type="text" (keyup)="onKeyupSearch($event)" (input)="keyword = $event.target.value" placeholder="Cari aplikasi" class="form-control">
+            <span class="input-group-btn">
+                <span class="btn btn-primary btn-search">
+                    <span class="glyphicon glyphicon-search"></span>
+                </span>
+            </span>
+        </div>
+    </form>
+</div>
+<ul class="home-app-container">
+  <li *ngFor="let application of applications | appSearch:keyword" (click)="onAppClick(application)" class="home-app-item">
+    <div class="home-app-image">
+      <img [src]="application.icon" class="img-responsive" alt="{{ application.path | translate }}">
+    </div>
+    <h5 class="home-app-title" innerHTML="{{ application.nama_aplikasi | translate | uiiHighlight }}"></h5>
+    <p class="home-app-desc">{{ application.deskripsi | translate }}</p>
+  </li>
+</ul>

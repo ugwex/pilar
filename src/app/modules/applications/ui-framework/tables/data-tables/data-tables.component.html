@@ -1,0 +1,35 @@
+<h4 class="content-header-title">Data Tables</h4>
+<div class="content-body">
+  <h2>Usage</h2>
+  <p>Import <code>PilarModule</code> in your root module <code>*.app.module</code>.</p>
+  <div class="box-template" [innerHTML]="basicImportModule"></div>
+  <h2>Examples</h2>
+  <h3>Basic data table</h3>
+  <div class="button-action-right">
+      <button class="btn btn-primary">{{ 'add' | translate }}</button>
+  </div>
+  <div class="table-wrapper">
+    <uii-table-skeleton *ngIf="!showTable"
+      [showMobileLimitOptions]="true"
+      [showButtonCreate]="false"
+      [columnCount]="2">
+    </uii-table-skeleton>
+    <uii-table *ngIf="showTable"
+      [actionColumn]="false"
+      [limitOptions]="false"
+      [searchOptions]="false"
+      [columns]="columns"
+      [rows]="rows">
+    </uii-table>
+  </div>
+  <div class="box-example">
+      <tabset>
+        <tab heading='template'>
+          <div class="box-template" [innerHTML]="basicTemplate"></div>
+        </tab>
+        <tab heading="component">
+          <div class="box-component" [innerHtml]="basicComponent"></div>
+        </tab>
+      </tabset>
+    </div>
+</div>

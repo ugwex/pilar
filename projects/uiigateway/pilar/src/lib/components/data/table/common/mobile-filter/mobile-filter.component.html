@@ -1,0 +1,62 @@
+<div *ngIf="limitOptions || searchOptions" class="mobile-filter-container">
+  <div class="limit-check-container">
+    <ul>
+      <li class="mobile-checkbox-container" *ngIf="checkboxColumn">
+        <div class="gateway-rcb">
+          <input type="checkbox" class="gateway-rcb-select" (change)="onRowSelect($event)" />
+          <label class="gateway-rcb-label"></label>
+          <p>&nbsp;Semua &nbsp;&nbsp;</p>
+        </div>
+      </li>
+      <li *ngIf="limitOptions" class="mobile-limit-container">
+        <div class="limiting">
+          <span class="filter-select" (click)="toggleLimit = !toggleLimit; toogleSearch = false; toggleSort = false;">{{selectedLimit}} ditampilkan</span>
+        </div>
+      </li>
+    </ul>
+  </div>
+  <div *ngIf="searchOptions" class="mobile-search-container">
+    <ul>
+      <li (click)="toggleSort = true; toggleLimit = false; toogleSearch = false">
+        <span class="ikon fa fa-sort"></span>
+        <span>&nbsp;urutkan &nbsp;</span>
+      </li>
+      <li (click)="toogleSearch = !toogleSearch; toggleLimit = false; toggleSort = false">
+        <span class="ikon fa" [ngClass]="toogleSearch ? 'fa-times' : 'fa-search'" ></span>
+      </li>
+    </ul>
+  </div>
+  <div class="mobile-limit-overlay" [ngClass]="toggleLimit ? '' : 'hide-limit-select'">
+    <ol class="limit-item">
+      <li *ngFor="let limit of limitOpts" (click)="onLimitChange(limit.value) ;toggleLimit = !toggleLimit" >{{limit.label}}</li>
+    </ol>
+  </div>
+</div>
+<div class="mobile-searching" [ngClass]="toogleSearch ? '' : 'hide-search'">
+  <input #searchKeyword type="text" placeholder="Cari..." (keyup.enter)="onSearchChange(searchKeyword.value)" />
+  <div class="erase-keyword" (click)="onSearchChange(''); searchKeyword.value = ''" >
+    <p *ngIf="searchKeyword.value !== ''">&times;</p>
+  </div>
+</div>
+<div class="mobile-sorting" [ngClass]="toggleSort ? '' : 'hide-sort'">
+  <div class="close-sort-container" (click)="toggleSort = false;">
+    <span class="fa fa-times" ></span>
+  </div>
+  <div class="sort-type-container">
+    <p><b>Jenis urutan</b></p>
+    <input type="checkbox" id="sort-toggle" (change)="onSortTypeChange()" />
+    <label for="sort-toggle">
+      <span class="fa" [ngClass]="isSortAsc ? 'fa-sort-amount-desc' : 'fa-sort-amount-asc'"></span>&nbsp;
+      Urut {{isSortAsc ? 'naik' : 'turun'}}
+    </label>
+  </div>
+  <div class="column-container">
+    <p><b>Pilih kolom</b></p>
+    <ul class="column-list">
+      <li *ngFor="let item of columns; let i = index">
+        <input type="radio" [attr.id]="'item-' + i" name="radio-culoumn-filter" (change)="onColumnSelect(item)" />
+        <label class="radio-col" [attr.for]="'item-' + i" for>{{item.name}}</label>
+      </li>
+    </ul>
+  </div>
+</div>

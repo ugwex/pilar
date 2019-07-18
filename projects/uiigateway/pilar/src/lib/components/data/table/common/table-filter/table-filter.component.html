@@ -1,0 +1,17 @@
+<div class="filter-options" *ngIf="limitOptions || searchOptions">
+  <div class="limit-options" *ngIf="limitOptions">
+    <span>
+      Tampilkan
+      <select (change)="onLimitChange($event.target.value)">
+        <option *ngFor="let option of limitOpts" [value]="option.value">{{ option.label }}</option>
+      </select>
+      data
+    </span>
+  </div>
+  <div class="search-options" *ngIf="searchOptions">
+    <div class="input-container">
+        <input #searchInput class="search-input" type="text" placeholder="Cari..." (keyup.enter)="onSearchChange(searchInput.value)"/>
+        <button><span class="fa fa-search" (click)="onSearchChange(searchInput.value)"></span></button>
+      </div>
+  </div>
+</div>

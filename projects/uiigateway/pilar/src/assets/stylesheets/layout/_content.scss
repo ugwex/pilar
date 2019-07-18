@@ -1,0 +1,45 @@
+.content-header-title{
+  border-bottom-width: 1px;
+  border-bottom-style: solid;
+  font-size: $font-size-content-header;
+  font-weight: bold;
+  line-height: 1.5;
+  margin: 0;
+  padding: 14px 20px;
+}
+.content-header{
+  border-bottom-width: 1px;
+  border-bottom-style: solid;
+  padding: 0 20px;
+}
+.content-body{
+  padding: 20px;
+}
+
+.wrapper-fw{
+  padding-top: 5px;
+  padding-bottom: 30px;
+  @extend .text-center;
+}
+.logo-fw{
+  margin-top: 40px;
+  margin-bottom: 40px;
+  img{
+    width: 250px;
+    max-width: 100%;
+  }
+}
+.content-fw{
+  .icon,
+  .text{
+    margin-bottom: 40px;
+  }
+  .reset-password-confirm & {
+    .icon{
+      img{
+        width: 390px;
+        max-width: 100%;
+      }
+    }
+  }
+}

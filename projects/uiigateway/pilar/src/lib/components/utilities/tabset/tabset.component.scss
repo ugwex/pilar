@@ -1,0 +1,91 @@
+::-webkit-scrollbar {
+    display: none;
+}
+@media screen and (max-width: 700px) {
+    .ugw-tab-container {
+        -webkit-overflow-scrolling: touch;
+        white-space: nowrap;
+        overflow-y: scroll;
+        scrollbar-width: none;
+        list-style: none;
+        li {
+            position: relative;
+            display: inline-block;
+            min-width: 33%;
+            span.tab-title-container {
+                overflow: visible;
+                vertical-align: middle;
+            }
+            .hide-tab-title {
+                display: none;
+            }
+            .hide-tab-icon {
+                display: none;
+            }
+            &.tab-active::after {
+                content: '';
+                position: absolute;
+                left: 0;
+                bottom: 0;
+                height: 4px;
+                width: 100%;
+                background: #093697;
+            }
+        }
+        .tab-border {
+            display: none;
+        }
+    }
+}
+.ugw-tab-container {
+    position: relative;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    padding: 0;
+    margin: 0;
+    border-bottom: 1px solid #fbc02d;
+    list-style: none;
+    li {
+        margin: 0;
+        cursor: pointer;
+        text-align: center;
+        height: 45px;
+        font-weight: bold;
+        color: #093697;
+        padding: 0 4px;
+        a {
+            display: flex;
+            align-items: center;
+            justify-content: space-around;
+            width: 100%;
+            height: 100%;
+        }
+        span.tab-icon {
+            margin-right: 2px;
+        }
+        span.tab-title-container {
+            overflow: hidden;
+            white-space: nowrap;
+            text-overflow: ellipsis;
+            vertical-align: middle;
+        }
+    }
+    .tab-border {
+        position: absolute;
+        bottom: 0;
+        height: 4px;
+        transition-timing-function: ease-out;
+        transition: left 300ms;
+        background: #093697;
+    }
+}
+.tab-item-content {
+    width: 100%;
+    ::ng-deep .tab-active {
+        display: block !important;
+    }
+    ::ng-deep .tab-pane {
+        display: none;
+    }
+}

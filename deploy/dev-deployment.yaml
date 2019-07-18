@@ -1,0 +1,61 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  namespace: academic-dev
+  name: web-uii-gateway-pilar-angular
+  labels:
+    app: web-uii-gateway-pilar-angular
+    tier: frontend
+    tim: akademik
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: web-uii-gateway-pilar-angular
+      tier: frontend
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxSurge: 0
+      maxUnavailable: 25%
+  revisionHistoryLimit: 5
+  template:
+    metadata:
+      labels:
+        app: web-uii-gateway-pilar-angular
+        tier: frontend
+        tim: akademik
+    spec:
+      containers:
+      - name: web-uii-gateway-pilar-angular
+        image: asia.gcr.io/uii-cloud-project/uii-gateway/frontend/web-uii-gateway-pilar-angular:dev
+        imagePullPolicy: Always
+        resources:
+          requests:
+            cpu: 100m
+            memory: 64Mi
+          limits:
+            cpu: 200m
+            memory: 128Mi
+        ports:
+        - containerPort: 80
+      # nodeSelector: 
+      #   app: web-uii-gateway
+---
+apiVersion: v1
+kind: Service
+metadata:
+  namespace: academic-dev
+  name: web-uii-gateway-pilar-angular
+  labels:
+    app: web-uii-gateway-pilar-angular
+    tier: frontend
+    tim: akademik
+spec:
+  type: NodePort
+  ports:
+  - port: 8080
+    targetPort: 80
+    nodePort: 31200
+  selector:
+    app: web-uii-gateway-pilar-angular

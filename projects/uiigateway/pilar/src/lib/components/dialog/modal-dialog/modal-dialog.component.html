@@ -1,0 +1,17 @@
+<div class="modal-header">
+</div>
+<div class="modal-body">
+  <div class="modal-icon">
+    <span class="fa fa-info icon-modal-info" aria-hidden="true"></span>
+    <span class="fa fa-check icon-modal-success" aria-hidden="true"></span>
+    <span class="material-icons icon-modal-warning">priority_high</span>
+    <span class="fa fa-times icon-modal-danger" aria-hidden="true"></span>
+  </div>
+  <h4 class="modal-title">{{ title }}</h4>
+  <div class="modal-message">
+    <p>{{ message }}</p>
+  </div>
+</div>
+<div class="modal-footer">
+  <button type="button" class="btn btn-confirm btn-info" (click)="_activeModal.hide()">{{ 'OK' | translate }}</button>
+</div>

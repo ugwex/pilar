@@ -1,0 +1,26 @@
+.datagrid {
+    overflow: scroll;
+    max-width: 85em;
+    max-height: 25em;
+
+    thead th {
+        position: sticky;
+        top: 0;
+    }
+
+    thead th:first-child {
+        left: 0;
+        z-index: 1;
+    }
+
+    tbody th {
+        position: sticky;
+        left: 0;
+        background: #F0F0F0;
+    }
+
+    table {
+        border-collapse: collapse;
+        width: 100%;
+    }
+}

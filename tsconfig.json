@@ -1,0 +1,60 @@
+{
+  "compileOnSave": false,
+  "compilerOptions": {
+    "baseUrl": "./",
+    "outDir": "./dist/out-tsc",
+    "sourceMap": true,
+    "declaration": false,
+    "moduleResolution": "node",
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "target": "es5",
+    "typeRoots": [
+      "node_modules/@types"
+    ],
+    "lib": [
+      "es2017",
+      "dom"
+    ],
+    "paths": {
+      "@uiigateway/app-setting": [
+        "dist/uiigateway/app-setting",
+        "dist/uiigateway/app-setting"
+      ],
+      "@uiigateway/app-setting/*": [
+        "dist/uiigateway/app-setting/*",
+        "dist/uiigateway/app-setting/*"
+      ],
+      "@uiigateway/app-curriculum": [
+        "dist/uiigateway/app-curriculum"
+      ],
+      "@uiigateway/app-curriculum/*": [
+        "dist/uiigateway/app-curriculum/*"
+      ],
+      "@uiigateway/app-dashboard": [
+        "dist/uiigateway/app-dashboard"
+      ],
+      "@uiigateway/app-dashboard/*": [
+        "dist/uiigateway/app-dashboard/*"
+      ],
+      "@uiigateway/app-monitor": [
+        "dist/uiigateway/app-monitor"
+      ],
+      "@uiigateway/app-monitor/*": [
+        "dist/uiigateway/app-monitor/*"
+      ],
+      "pilar": [
+        "dist/pilar"
+      ],
+      "pilar/*": [
+        "dist/pilar/*"
+      ],
+      "@uiigateway/pilar": [
+        "dist/uiigateway/pilar"
+      ],
+      "@uiigateway/pilar/*": [
+        "dist/uiigateway/pilar/*"
+      ]
+    }
+  }
+}

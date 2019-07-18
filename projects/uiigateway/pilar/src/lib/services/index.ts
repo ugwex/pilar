@@ -1,0 +1,11 @@
+export { ConfigService } from './config.service';
+export { DataService } from './data.service';
+export { DateService } from './date.service';
+export { ErrorService, ErrorEvent } from './error.service';
+export { HttpService} from './http.service';
+export { ImageService } from './image.service';
+export { LoadingBarService, LoadingBarEvent, LoadingBarEventType, isPresent } from './loadingBar.service';
+export { TablePageService } from './table-page.service';
+export { TranslateService } from './translate.service';
+export { CoreService } from './core.service';
+export { StatusService } from './status.service';

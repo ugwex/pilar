@@ -1,0 +1,16 @@
+.breadcrumb-wrapper{
+  background-color: $uii-breadcrumb-bg;
+  box-shadow: 0 1px 1px 0 rgba(0,0,0,0.1);
+}
+.breadcrumb{
+  background-color: transparent;
+  > li + li:before {
+    content: "\f105";
+    display: inline-block;
+    font: normal normal normal 14px/1 FontAwesome;
+    font-size: inherit;
+    text-rendering: auto;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+} 

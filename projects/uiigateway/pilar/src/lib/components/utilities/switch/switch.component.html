@@ -1,0 +1,21 @@
+<div class="ugw-switch-container">
+  <label
+    for="ugw-switch"
+    [class.switch-pane-checked]="_checked"
+    class="ugw-switch-label-container"
+    [class.disabled-switch]="_disabled"
+    (click)="_disabled ? $event.preventDefault() : onSwitchToggle()">
+    <label
+      for="ugw-switch"
+      class="ugw-switch-ball"
+      [class.switch-ball-checked]="_checked"
+      [class.disabled-switch]="_disabled">
+    </label>
+  </label>
+  <div
+    *ngIf="useOverlay"
+    class="switch-overlay"
+    [class.disabled-switch]="_disabled"
+    (click)="_disabled ? $event.preventDefault() : onOverlayToggle()"></div>
+    <ng-content></ng-content>
+</div>

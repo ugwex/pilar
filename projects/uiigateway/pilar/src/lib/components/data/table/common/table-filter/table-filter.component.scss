@@ -1,0 +1,51 @@
+.filter-options {
+    width: 100%;
+    height: 40px;
+    position: relative;
+    margin-bottom: 15px;
+    .limit-options {
+        font-size: 12px;
+        select {
+            width: 55px;
+            height: 40px;
+            font-size: 13px;
+            background: #ffffff;
+            outline: none;
+        }
+    }
+    .search-options {
+        position: absolute;
+        top: 0;
+        right: 0;
+        z-index: 20;
+        .input-container {
+            display: flex;
+            align-items: center;
+        }
+        .search-input {
+            height: 40px;
+            width: 384px;
+            margin: 0;
+            padding: 0 10px;
+            border: 1px solid #cccccc;
+            outline: none;
+        }
+        button {
+            background: #093697;
+            box-shadow: none;
+            color: #ffffff;
+            height: 40px;
+            width: 40px;
+            border: none;
+            outline: none;
+            margin: 0;
+            font-size: 20px;
+        }
+    }
+}
+
+@media screen and (max-width: 770px) {
+    .filter-options {
+        display: none;
+    }
+}

@@ -1,0 +1,255 @@
+<header id="header" class="navbar-fixed-top" [ngClass]="showBreadcrumb ? 'header-with-breadcrumb' : ''">
+  <div class="slim-loading-bar">
+    <div class="slim-loading-bar-progress" 
+      [style.width]="progress + '%'" 
+      [style.backgroundColor]="color" 
+      [style.color]="color"
+      [style.height]="height" 
+      [style.opacity]="show ? '1' : '0'" 
+      [style.transition]="isTransition">
+    </div>
+  </div>
+  <nav class="navbar">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle" aria-expanded="false" aria-controls="navbar" (click)="onBtnToggleClick()">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a [routerLink]="['/']" class="navbar-brand">
+          <img src="assets/images/uii-logo.png" alt="">
+        </a>
+      </div>
+      <ul class="nav navbar-nav navbar-right">
+        <li *ngIf="showChatMessage" class="header-menu header-menu__chat" dropdown>
+          <button class="btn btn-link" id="dropdownMessage" dropdownToggle>
+            <span class="icon glyphicon glyphicon-envelope"></span>
+          </button>
+          <div *dropdownMenu class="dropdown-menu" aria-labelledby="dropdownMessage">
+            <div class="dropdown-header">
+              5 Pesan baru
+            </div>
+            <ul class="scrollable">
+              <li>
+                <a href="#" class="icon">
+                  <img src="assets/images/profile.png" class="img-responsive sm-profileimg img-circle" alt="profile">
+                  <div class="message-body">
+                    <p class="message-name">
+                      Jhonny Marwanto bin Christoper
+                    </p>
+                    <p class=" message-content">
+                      Halo
+                    </p>
+                  </div>
+                </a>
+              </li>
+              <li role="separator" class="divider"></li>
+              <li>
+                <a href="#" class="icon">
+                  <img src="assets/images/profile.png" class="img-responsive sm-profileimg img-circle" alt="profile">
+                  <div class="message-body">
+                    <p class="message-name">
+                      Jhonny Marwanto bin Christoper
+                    </p>
+                    <p class=" message-content">
+                      Halo
+                    </p>
+                  </div>
+                </a>
+              </li>
+              <li role="separator" class="divider"></li>
+              <li>
+                <a href="#" class="icon">
+                  <img src="assets/images/profile.png" class="img-responsive sm-profileimg img-circle" alt="profile">
+                  <div class="message-body">
+                    <p class="message-name">
+                      Jhonny Marwanto bin Christoper
+                    </p>
+                    <p class=" message-content">
+                      Halo
+                    </p>
+                  </div>
+                </a>
+              </li>
+              <li role="separator" class="divider"></li>
+              <li>
+                <a href="#" class="icon">
+                  <img src="assets/images/profile.png" class="img-responsive sm-profileimg img-circle" alt="profile">
+                  <div class="message-body">
+                    <p class="message-name">
+                      Jhonny Marwanto bin Christoper
+                    </p>
+                    <p class=" message-content">
+                      Halo
+                    </p>
+                  </div>
+                </a>
+              </li>
+              <li role="separator" class="divider"></li>
+              <li>
+                <a href="#" class="icon">
+                  <img src="assets/images/profile.png" class="img-responsive sm-profileimg img-circle" alt="profile">
+                  <div class="message-body">
+                    <p class="message-name">
+                      Jhonny Marwanto bin Christoper
+                    </p>
+                    <p class=" message-content">
+                      Halo
+                    </p>
+                  </div>
+                </a>
+              </li>
+              <li role="separator" class="divider"></li>
+              <li>
+                <a href="#" class="icon">
+                  <img src="assets/images/profile.png" class="img-responsive sm-profileimg img-circle" alt="profile">
+                  <div class="message-body">
+                    <p class="message-name">
+                      Jhonny Marwanto bin Christoper
+                    </p>
+                    <p class=" message-content">
+                      Halo
+                    </p>
+                  </div>
+                </a>
+              </li>
+            </ul>
+            <div class="dropdown-footer">
+              <a href="">Tampilkan lebih banyak</a>
+            </div>
+          </div>
+        </li>
+        <li *ngIf="showNotification" class="header-menu header-menu__notifications" dropdown>
+          <button class="btn btn-link" id="dropdownNotif" dropdownToggle>
+            <span class="icon fa fa-bell"></span>
+            <span class="badge badge-danger" *ngIf="upcomingNotifications && upcomingNotifications.length > 0">{{ upcomingNotifications.length }}</span>
+          </button>
+          <div *dropdownMenu class="dropdown-menu dropdown-warning" aria-labelledby="dropdownNotif">
+            <div *ngIf="dataNotifications && dataNotifications.length > 0" class="dropdown-header dropdown-header-warning">
+              <span>{{ upcomingNotifications.length }} Notifikasi tertunda</span>
+            </div>
+            <div class="dropdown-content">
+              <ul *ngIf="dataNotifications && dataNotifications.length > 0" class="list-unstyled">
+                <li *ngFor="let notif of dataNotifications;">
+                  <button class="btn btn-unstyled btn-block notification-item" [ngClass]="notif.flag_read == 0 ? 'notification-item__unread':''"
+                    (click)="onNotifClick(notif)">
+                    <div class="notif-image">
+                      <img [src]="notif.icon" class="img-responsive" alt="icon">
+                    </div>
+                    <div class="notif-content">
+                      <span class="notif-content__name">
+                        {{ notif.pesan }}
+                      </span>
+                      <span class="notif-content__date">
+                        {{ notif.tgl_input | date:'dd MMM y hh:mm' }}
+                      </span>
+                    </div>
+                  </button>
+                </li>
+              </ul>
+              <ul *ngIf="!dataNotifications || dataNotifications.length == 0" class="list-unstyled">
+                <li>
+                  <p class="text-center margin-bottom-0">
+                    <strong>{{ 'empty notifications' | translate }}</strong>
+                  </p>
+                </li>
+              </ul>
+            </div>
+            <div *ngIf="dataNotifications && dataNotifications.length > 0" class="dropdown-footer dropdown-footer-warning">
+              <a [routerLink]="['/notif']">{{ 'show all' | translate }}</a>
+            </div>
+          </div>
+        </li>
+        <li *ngIf="showShortcutMenu" class="header-menu header-menu__applications" dropdown>
+          <button class="btn btn-link" dropdownToggle>
+            <span class="icon fa fa-th"></span>
+          </button>
+          <div *dropdownMenu class="dropdown-menu">
+            <div *ngIf="dataShortcutApps.length > 0" class="dropdown-content">
+              <div class="container-fluid">
+                <div class="row">
+                  <div *ngFor="let application of dataShortcutApps" class="col-xs-4">
+                    <button class="btn btn-unstyled btn-block shortcut-application-item text-center" (click)="onShortcutAppClick(application)">
+                      <div class="shortcut-app-image">
+                        <img src="{{application.icon}}" class="img-responsive" alt="{{ application.path | translate }}" alt="icon">
+                      </div>
+                      <h6 innerHTML="{{ application.name | translate | uiiHighlight }}"></h6>
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="dropdown-footer">
+              <a [routerLink]="['/']">Homepage</a>
+            </div>
+          </div>
+        </li>
+        <li *ngIf="showAccount" class="header-menu header-menu__account" dropdown>
+          <button class="btn btn-link" id="dropdownProfile" dropdownToggle>
+            <span class="icon">
+              <span class="avatar">
+                <img src="{{ userLogin?.photo }}" class="img-responsive" alt="Photo" (error)="onImageError($event)">
+              </span>
+              <span class="caret"></span>
+            </span>
+          </button>
+          <div *dropdownMenu class="dropdown-menu">
+            <div class="dropdown-header">
+              <div class="account-item account-default">
+                <div class="account-image">
+                  <img src="{{ userLogin?.photo }}" class="img-responsive" alt="Photo" (error)="onImageError($event)">
+                </div>
+                <div class="account-info">
+                  <span class="name">{{ userLogin?.name }}</span>
+                  <span class="id">{{ userLogin?.niu }}</span>
+                  <span class="role">{{ userGroupPrimary?.name }}</span>
+                </div>
+              </div>
+            </div>
+            <div class="dropdown-content">
+              <ul class="list-unstyled">
+                <li *ngFor="let group of userGroups">
+                  <button class="btn btn-unstyled btn-block account-item account-group">
+                    <div class="account-image">
+                      <img src="{{ userLogin?.photo }}" class="img-responsive" (error)="onImageError($event)" alt="photo">
+                    </div>
+                    <div class="account-info">
+                      <span class="name">{{ userLogin?.name }}</span>
+                      <span class="id">{{ userLogin?.niu }}</span>
+                      <span class="role">{{ group.name }}</span>
+                    </div>
+                  </button>
+                </li>
+              </ul>
+            </div>
+            <div class="dropdown-footer">
+              <ul class="list-unstyled">
+                <li>
+                  <a [routerLink]="['/account/profile']" class="account-option account-setting">
+                    <span class="icon icon-settings"></span>
+                    <span class="text">{{ 'my account' | translate }}</span>
+                  </a>
+                </li>
+                <li>
+                  <a [routerLink]="['/account/log']" class="account-option account-log">
+                    <span class="icon icon-list"></span>
+                    <span class="text">{{ 'activity log' | translate }}</span>
+                  </a>
+                </li>
+                <li>
+                  <a [routerLink]="['/account/login']" class="account-option account-logout">
+                    <span class="icon icon-logout"></span>
+                    <span class="text">{{ 'logout' | translate }}</span>
+                  </a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </nav>
+  <uii-breadcrumb *ngIf="showBreadcrumb"></uii-breadcrumb>
+</header>

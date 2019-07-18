@@ -1,0 +1,65 @@
+<h4 class="content-header-title">Component - Accordion</h4>
+<div class="content-body">
+  <h2>Usage</h2>
+  <p>Import <code>AccordionModule</code> in your file <code>*.component.ts</code>.</p>
+  <div class="box-usage" [innerHtml]="docUsage"></div>
+
+  <h2>Basic</h2>
+  <div class="box-demo">
+    <accordion>
+      <accordion-group heading="Static Header, initially expanded">
+        This content is straight in the template.
+      </accordion-group>
+      <accordion-group #group>
+        <div accordion-heading class="clearfix">
+          I can have markup, too!
+          <span class="badge badge-secondary float-right pull-right">Some HTML here</span>
+        </div>
+        This is just some content to illustrate fancy headings.
+      </accordion-group>
+      <accordion-group heading="Group with isOpenChange event listener" (isOpenChange)="log($event)">
+        <p>Some content</p>
+      </accordion-group>
+      <accordion-group heading="Another group">
+        <p>Some content</p>
+      </accordion-group>
+    </accordion>
+  </div>
+  <div class="box-example">
+    <tabset>
+      <tab heading='template'>
+        <div class="box-template" [innerHTML]="basicTemplate"></div>
+      </tab>
+      <tab heading="component">
+        <div class="box-component" [innerHtml]="basicComponent"></div>
+      </tab>
+    </tabset>
+  </div>
+
+  <h2>Variations</h2>
+  <p>You can choose style color, setup accordion dynamically, default opened or many options</p>
+  <div class="box-demo">
+    <accordion>
+      <accordion-group 
+        *ngFor="let group of groups" 
+        [heading]="group.title" 
+        [panelClass]="group.class"
+        [isDisabled]="group.disabled"
+        [isOpen]="group.open">
+        {{ group?.content }}
+      </accordion-group>
+    </accordion>
+  </div>
+  <div class="box-example">
+    <tabset>
+      <tab heading='template'>
+        <div class="box-template" [innerHTML]="variationsTemplate"></div>
+      </tab>
+      <tab heading="component">
+        <div class="box-component" [innerHTML]="variationsComponent"></div>
+      </tab>
+    </tabset>
+  </div>
+
+  <h4 class="text-center">For more options you can see on <a href="https://valor-software.com/ngx-bootstrap/#/accordion" target="_blank">ngx-bootstrap</a></h4>
+</div>

@@ -1,0 +1,43 @@
+<!-- show if menu have not child -->
+<a *ngIf="(!menuItem['submenu'] || menuItem['submenu'].length == 0) && menuItem.otoritas.length > 0"
+        [routerLink]="[menuItem.url]"
+        [fragment]="menuItem.fragment"
+        [attr.target]="menuItem.target"
+        [attr.title]="menuItem.nama_menu"
+        [class.active]="menuItem.selected"
+        (mouseenter)="onHoverItem(menuItem)"
+        (click)="onSelectItem(menuItem)"
+        routerLinkActive="active">
+    <span class="menu-icon {{ menuItem['ikon'] }}" *ngIf="menuItem['ikon']"></span>
+    <span class="menu-title">{{ menuItem['nama_menu'] | translate }}</span>
+</a>
+
+<!-- show if menu have child -->
+<a *ngIf="menuItem['submenu'] && menuItem['submenu'].length > 0"
+   (click)="$event.preventDefault(); onToggleSubMenu(menuItem);"
+   [attr.target]="menuItem.target"
+   [attr.title]="menuItem.nama_menu"
+   [class.active]="menuItem.selected || menuItem.expanded"
+   (mouseenter)="onHoverItem(menuItem)"
+   routerLinkActive="active"
+   href="#">
+    <span class="menu-icon {{ menuItem['ikon'] }}" *ngIf="menuItem['ikon']"></span>
+    <span class="menu-title">{{ menuItem['nama_menu'] | translate }}</span>
+    <i class="fa pull-right"[class.fa-caret-right]="!menuItem.expanded"
+    [class.fa-caret-up]="menuItem.expanded"></i>
+</a>
+
+<!-- recursive sub menu if have child -->
+<ul *ngIf="menuItem['submenu'] && menuItem['submenu'].length > 0"
+    [class.collapsed]="!(menuItem.submenu && menuItem.expanded)"
+    [class.expanded]="menuItem.expanded"
+    class="menu-items list-unstyled">
+    <li sidebarMenuItem *ngFor="let item of menuItem.submenu"
+        [menuItem]="item"
+        [class.menu-group]="item.group"
+        (hoverItem)="onHoverItem($event)"
+        (toggleSubMenu)="onToggleSubMenu($event)"
+        (selectItem)="onSelectItem($event)"
+        (itemClick)="onItemClick($event)"
+        class="menu-item"></li>
+</ul>

@@ -1,0 +1,36 @@
+<div id="root"> 
+    <ugw-header 
+        [dataNotifications]="dataNotifications"
+        [showNotification]="showNotification"
+        [showBreadcrumb]="showBreadcrumb"
+        [dataShortcutApps]="dataShortcutApps"
+        [showShortcutMenu]="showShortcutMenu"
+        [dataAccount]="dataAccount">
+    </ugw-header>
+
+    <main id="main">
+        <ugw-home-screen 
+            *ngIf="isHomeLayout" 
+            [applications]="applications" 
+            (applicationClicked)="onApplicationClick($event)">
+        </ugw-home-screen>
+        <div *ngIf="isDefaultLayout === true">
+            <aside id="sidebar">
+                <ugw-sidebar 
+                    [items]="menus" 
+                    (menuClicked)="menuClicked($event)"
+                    (sidebarCloseClicked)="onBtnSidebarCloseClick()"></ugw-sidebar>
+            </aside>
+            <section id="content">
+                <router-outlet></router-outlet>
+            </section>
+        </div>
+        <div *ngIf="isFullWidthLayout || isProfileLayout">
+            <router-outlet></router-outlet>
+        </div>
+    </main>
+
+    <uii-footer></uii-footer>
+
+    <div class="sidebar-overlay" (click)="onSidebarOverlayClick()"></div>
+</div>
